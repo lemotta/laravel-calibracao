@@ -17,6 +17,7 @@ const student_t95 =[
 const tol = 0.05; //5%
 const IMP = 0.01; //Incerteza da medição do padrao
 
+
 /*
  * Funções
  */
@@ -33,6 +34,7 @@ function report_324_humidade() {
     for (var i = 0; array.length > i; i++) {
         if (isNaN(array[i])) {
             document.getElementById("humidity_status_label").innerText = "ERRO";
+            document.getElementById("humidity_status").value = "ERRO";
             document.getElementById("humidity_status_label").style.color = "red";
             x = false;
         }   
@@ -47,6 +49,7 @@ function report_324_humidade() {
         
         if(ErT(pattern, array) == 0) {
             document.getElementById("humidity_status_label").innerText = "ERRO";
+            document.getElementById("humidity_status").value = "ERRO";
             document.getElementById("humidity_status_label").style.color = "red";
         } else {
             if ((ErT(pattern, array) >= tolmin) && (ErT(pattern, array) <= tolmax)) {
@@ -56,6 +59,7 @@ function report_324_humidade() {
                 document.getElementById("save").disabled = false;
             } else {
                 document.getElementById("humidity_status_label").innerText = "REPROVADO";
+                document.getElementById("humidity_status").value = "REPROVADO";
                 document.getElementById("humidity_status_label").style.color = "red";
             }
         }               
@@ -75,6 +79,7 @@ function report_324_temperatura() {
     for (var i = 0; array.length > i; i++) {
         if (isNaN(array[i])) {
             document.getElementById("temp_status_label").innerText = "ERRO";
+            document.getElementById("temp_status").value = "ERRO";
             document.getElementById("temp_status_label").style.color = "red";
             x = false;
         }   
@@ -89,6 +94,7 @@ function report_324_temperatura() {
         
         if(ErT(pattern, array) == 0) {
             document.getElementById("temp_status_label").innerText = "ERRO";
+            document.getElementById("temp_status").value = "ERRO";
             document.getElementById("temp_status_label").style.color = "red";
         } else {
             if ((ErT(pattern, array) >= tolmin) && (ErT(pattern, array) <= tolmax)) {
@@ -98,6 +104,7 @@ function report_324_temperatura() {
                 document.getElementById("save").disabled = false;
             } else {
                 document.getElementById("temp_status_label").innerText = "REPROVADO";
+                document.getElementById("temp_status").value = "REPROVADO";
                 document.getElementById("temp_status_label").style.color = "red";
             }
         }               

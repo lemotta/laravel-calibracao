@@ -11,7 +11,8 @@ class Calibration extends Model
         'laboratory_id',
         'certificate_calibration',
         'results',
-        'next_calibration'        
+        'next_calibration',
+        'user_id'
     ];
     
     public function register() {

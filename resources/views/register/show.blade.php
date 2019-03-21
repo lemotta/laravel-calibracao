@@ -45,7 +45,7 @@
                     <a href="{{route($register->report->route, $register->id)}}" class="btn btn-primary">calibration</a>
                     @else
                     @if($register->require_calibration == 1)
-                    <a href="" class="btn btn-primary">calibration</a>
+                    <a href="{{ route('report.default', $register->id) }}" class="btn btn-primary">calibration</a>
                     @endif
                     @endif
                     {!! Form::submit("delete", ['class' => 'btn btn-danger']) !!}                                        

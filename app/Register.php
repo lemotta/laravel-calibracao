@@ -38,5 +38,9 @@ class Register extends Model {
     public function instruction() {
         return $this->belongsTo(Instruction::class);
     }
+    
+    public function calibration($id) {
+        return Calibration::where('register_id', $id)->orderBy('register_id', 'desc')->first();
+    }
 
 }

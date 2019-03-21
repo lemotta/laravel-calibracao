@@ -6,6 +6,13 @@
             <div class="card">                
                 <div class="card-header">Report 324</div>
                 <div class="card-body">
+                    @if( isset($errors) && count($errors) > 0 )
+                    <div class="alert alert-danger">
+                        @foreach( $errors->all() as $error )
+                        <p>{{$error}}</p>
+                        @endforeach
+                    </div>
+                    @endif
                     {!! Form::open(['route' => 'calibration.store', 'class' => 'form']) !!}
                     {!! Form::hidden('id', $register->id) !!}
                     <div class="form-group">
@@ -89,14 +96,7 @@
                     </div>
                     {!! Form::close() !!}
                 </div>
-            </div>
-            @if( isset($errors) && count($errors) > 0 )
-            <div class="alert alert-danger">
-                @foreach( $errors->all() as $error )
-                <p>{{$error}}</p>
-                @endforeach
-            </div>
-            @endif
+            </div>            
         </div>        
     </div>
 </div>
