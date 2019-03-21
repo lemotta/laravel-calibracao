@@ -65,23 +65,28 @@ class CalibrationController extends Controller {
             }
             if (strcmp($status, "APROVADO") == 0) {
                 $patterns = array();
-                for ($i = 1; $i < count($dataForm); $i++) {
+                for ($i = 0; $i < count($dataForm); $i++) {
                     if (array_key_exists('pattern' . $i . '_id', $dataForm)) {
-                        $patterns[] = $dataForm['pattern' . $i . '_id'];
+                        $patterns[] = intval($dataForm['pattern' . $i . '_id']);
                         unset($dataForm['pattern' . $i . '_id']);
                     }
                 }
-                $dataForm['patterns'] = $patterns;
-                foreach ($patterns as $pattern) {
-                    $calpattern = $this->register->calibration($pattern);
+                //array_splice($patterns, 1, 1); //re-index array
+                $cal_pattern = array();
+                for ( $i = 0 ; $i < count($patterns) ; $i++ ) {
+                    $calpattern = $this->register->calibration($patterns[$i]);
                     if(isset($calpattern)) {
+                        array_splice($patterns, $i, 1);
                         if (strtotime(date('Y-m-d')) > strtotime($calpattern->next_calibration)) {
                             $msg = strtoupper($calpattern->register->department->description) . ' ' . str_pad($calpattern->register->number, 4, '0', STR_PAD_LEFT) . ' - ';
                             $msg .= 'Selecionado como padrão, não tem data de calibração válida.';
                             return view('calibration.error', compact('msg'));
                         }
+                        $cal_pattern[] = $calpattern->id;
                     }                    
                 }
+                $dataForm['patterns'] ['register']    = $patterns;
+                $dataForm['patterns'] ['calibration'] = $cal_pattern;
                 $dataForm['status'] = $status;
                 $calibration = [
                     'register_id' => intval($id),
@@ -135,11 +140,14 @@ class CalibrationController extends Controller {
 
     public function report($id) {
         $calibration = $this->calibration->find($id);
-        $results = unserialize($calibration['results']);
+        $results = unserialize($calibration['results']);        
         $status = $results['status'];
         $patterns = array();
-        foreach ($results['patterns'] as $pattern) {
+        foreach ($results['patterns']['register'] as $pattern) {
             $patterns[] = $this->register->find($pattern);
+        }
+        foreach ($results['patterns']['calibration'] as $pattern) {
+            $patterns[] = $this->calibration->find($pattern);
         }
         unset($results['patterns']);
         unset($results['status']);

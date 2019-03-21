@@ -76,38 +76,58 @@
                 <p>
                     <b>ID: </b>
                     <em>
+                        @if(isset($pattern->department->description))
                         {{$pattern->department->description}} {{str_pad($pattern->number,4,'0', STR_PAD_LEFT)}}
+                        @else
+                        {{$pattern->register->department->description}} {{str_pad($pattern->register->number,4,'0', STR_PAD_LEFT)}}
+                        @endif
                     </em>
                 </p>
                 <p>
                     <b>Tipo: </b>
                     <em>
+                        @if(isset($pattern->modelofequipament->typeofequipament->type))
                         {{$pattern->modelofequipament->typeofequipament->type}}
+                        @else
+                        {{$pattern->register->modelofequipament->typeofequipament->type}}
+                        @endif
                     </em>
                 </p>            
                 <p>
                     <b>Fabricante: </b>
                     <em>
+                        @if(isset($pattern->modelofequipament->manufacturer->name))
                         {{$pattern->modelofequipament->manufacturer->name}}
+                        @else
+                        {{$pattern->register->modelofequipament->manufacturer->name}}
+                        @endif
                     </em>
                 </p>
                 <p>
                     <b>Modelo: </b>
                     <em>
+                        @if(isset($pattern->modelofequipament->model))
                         {{$pattern->modelofequipament->model}}
+                        @else
+                        {{$pattern->register->modelofequipament->model}}
+                        @endif
                     </em>
                 </p>
                 <p>
                     <b>Serial: </b>
                     <em>
+                        @if(isset($pattern->serialnumber))
                         {{$pattern->serialnumber}}
+                        @else
+                        {{$pattern->register->serialnumber}}
+                        @endif
                     </em>
                 </p>
                 <p>
                     <b>Cert. de Calibração: </b>
-                    @if( isset($pattern->calibration($pattern->id)->certificate_calibration) )
+                    @if( isset($pattern->certificate_calibration) )
                     <em>
-                        {{ $pattern->calibration($pattern->id)->certificate_calibration }}
+                        {{ $pattern->certificate_calibration }}
                     </em>
                     @else
                     <em>
@@ -115,19 +135,19 @@
                     </em>
                     @endif
                 </p>
-                @if( isset($pattern->calibration($pattern->id)->next_calibration) )
+                @if( isset($pattern->next_calibration) )
                 <p>
                     <b>Validade: </b>                    
                     <em>
-                        {{ date('M j, Y', strtotime($pattern->calibration($pattern->id)->next_calibration)) }}
+                        {{ date('M j, Y', strtotime($pattern->next_calibration)) }}
                     </em>                    
                 </p>
                 @endif
-                @if( isset($pattern->calibration($pattern->id)->laboratory_id) )
+                @if( isset($pattern->laboratory_id) )
                 <p>
                     <b>Laborátorio: </b>
                     <em>
-                        {{ $pattern->calibration($pattern->id)->laboratory->laboratory }}
+                        {{ $pattern->laboratory->laboratory }}
                     </em>
                 </p>
                 @endif
