@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 //use Illuminate\Http\Request;
 use App\Register;
 use App\Laboratory;
+
 //use Barryvdh\DomPDF\Facade as PDF;
 
 class ReportsController extends Controller {
@@ -17,9 +18,9 @@ class ReportsController extends Controller {
     ) {
         $this->middleware('auth');
         $this->register = $register;
-        $this->laboratory = $laboratory;
+        $this->laboratory = $laboratory;        
     }
-    
+
     public function default_report($id) {
         $register = $this->register->find($id);
         $laboratory = $this->laboratory->pluck('laboratory', 'id');
@@ -77,9 +78,9 @@ class ReportsController extends Controller {
                         ->join('typeofequipaments', 'modelofequipaments.typeofequipament_id', '=', 'typeofequipaments.id')
                         ->select('registers.id', 'registers.number', 'departments.description')
                         ->where([
-                                ['typeofequipaments.id', '=', $register->report->pattern1],
-                                ['registers.is_pattern', '=', '1'],
-                                ['registers.active', '=', '1']
+                            ['typeofequipaments.id', '=', $register->report->pattern1],
+                            ['registers.is_pattern', '=', '1'],
+                            ['registers.active', '=', '1']
                         ])->get();
         $pattern1 = array();
         foreach ($pattern as $xpattern) {
@@ -90,23 +91,15 @@ class ReportsController extends Controller {
                         ->join('typeofequipaments', 'modelofequipaments.typeofequipament_id', '=', 'typeofequipaments.id')
                         ->select('registers.id', 'registers.number', 'departments.description')
                         ->where([
-                                ['typeofequipaments.id', '=', $register->report->pattern2],
-                                ['registers.is_pattern', '=', '1'],
-                                ['registers.active', '=', '1']
+                            ['typeofequipaments.id', '=', $register->report->pattern2],
+                            ['registers.is_pattern', '=', '1'],
+                            ['registers.active', '=', '1']
                         ])->get();
         $pattern2 = array();
         foreach ($pattern as $xpattern) {
             $pattern2[$xpattern->id] = strtoupper($xpattern->description) . ' ' . str_pad($xpattern->number, 4, '0', STR_PAD_LEFT);
         }
         return view('report.324', compact('register', 'pattern1', 'pattern2'));
-        //return \PDF::loadView('report.324', compact('register', 'pattern1', 'pattern2'))
-          //      ->download('asffasfds.pdf');
-        //$pdf = PDF::loadView('report.pdf');
-        //return $pdf->download('asffasfds.pdf');
-        //return view('report.pdf');
-        //$pdf    = PDF::setOptions([
-        //    'images' => true
-        //])->loadView('report.pdf')->setPaper('a4', 'portrait');
-        //return $pdf->stream('carfact_sheet.pdf');
     }
+
 }

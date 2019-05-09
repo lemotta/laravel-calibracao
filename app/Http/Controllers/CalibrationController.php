@@ -28,6 +28,17 @@ class CalibrationController extends Controller {
     public function index() {
         $calibration = $this->calibration->all();
         return view('calibration.index', compact('calibration'));
+        /*
+         * SELECT
+          calibrations.register_id AS register_id,
+          MAX(calibrations.next_calibration) AS next_calibration
+          FROM
+          calibrations INNER JOIN registers ON calibrations.register_id = registers.id
+          WHERE
+          registers.active = 1
+          GROUP BY
+          register_id
+         */
     }
 
     /**
@@ -65,17 +76,16 @@ class CalibrationController extends Controller {
             }
             if (strcmp($status, "APROVADO") == 0) {
                 $patterns = array();
-                for ($i = 0; $i < count($dataForm); $i++) {
+                for ($i = 1; $i < count($dataForm); $i++) {
                     if (array_key_exists('pattern' . $i . '_id', $dataForm)) {
                         $patterns[] = intval($dataForm['pattern' . $i . '_id']);
                         unset($dataForm['pattern' . $i . '_id']);
                     }
                 }
-                //array_splice($patterns, 1, 1); //re-index array
                 $cal_pattern = array();
-                for ( $i = 0 ; $i < count($patterns) ; $i++ ) {
+                for ($i = 0; $i < count($patterns); $i++) {
                     $calpattern = $this->register->calibration($patterns[$i]);
-                    if(isset($calpattern)) {
+                    if (isset($calpattern)) {
                         array_splice($patterns, $i, 1);
                         if (strtotime(date('Y-m-d')) > strtotime($calpattern->next_calibration)) {
                             $msg = strtoupper($calpattern->register->department->description) . ' ' . str_pad($calpattern->register->number, 4, '0', STR_PAD_LEFT) . ' - ';
@@ -83,9 +93,9 @@ class CalibrationController extends Controller {
                             return view('calibration.error', compact('msg'));
                         }
                         $cal_pattern[] = $calpattern->id;
-                    }                    
+                    }
                 }
-                $dataForm['patterns'] ['register']    = $patterns;
+                $dataForm['patterns'] ['register'] = $patterns;
                 $dataForm['patterns'] ['calibration'] = $cal_pattern;
                 $dataForm['status'] = $status;
                 $calibration = [
@@ -140,7 +150,7 @@ class CalibrationController extends Controller {
 
     public function report($id) {
         $calibration = $this->calibration->find($id);
-        $results = unserialize($calibration['results']);        
+        $results = unserialize($calibration['results']);
         $status = $results['status'];
         $patterns = array();
         foreach ($results['patterns']['register'] as $pattern) {
