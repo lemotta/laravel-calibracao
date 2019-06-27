@@ -13,6 +13,7 @@ class Register extends Model {
         'modelofequipament_id',
         'require_calibration',
         'is_pattern',
+        'active',
         'period_id',
         'report_id',
         'instruction_id',

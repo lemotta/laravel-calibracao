@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-11">
+        <div class="col-md-12">
             <div class="card">                
                 <div class="card-body">                    
                     <table class="table table-striped">
@@ -35,6 +35,9 @@
                                     <button type="button" class="btn btn-info">Report</button>
                                 </a>
                                 @endif
+                                <a href="{{route('calibration.tag',$cal->id)}}" class="actions edit">
+                                    <button type="button" class="btn btn-info">Print</button>
+                                </a>
                             </td>                            
                         </tr>
                         @endforeach

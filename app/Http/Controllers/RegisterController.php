@@ -106,6 +106,7 @@ class RegisterController extends Controller {
         $department = $this->department->pluck('description', 'id');
         $modeloofequipament = $this->modeloofequipament->pluck('model', 'id');
         $period = $this->period->pluck('period_at_month', 'id');
+        $period[] = 'no calibration required';
         $report = $this->report->pluck('number', 'id');
         $instruction = $this->instruction->pluck('description', 'id');
         return view('register.create-edit', compact('register', 'department', 'modeloofequipament', 'period', 'report', 'instruction'));
@@ -123,6 +124,16 @@ class RegisterController extends Controller {
         $register = $this->register->find($id);
         $period = $this->period->find($dataForm['period_id']);
         $report = $this->report->find($dataForm['report_id']);
+        if(!isset($dataForm['active'])) {
+            $dataForm['active'] = '0';
+        } else {
+            $dataForm['active'] = '1';
+        }
+        if(!isset($dataForm['is_pattern'])) {
+            $dataForm['is_pattern'] = '0';
+        } else {
+            $dataForm['is_pattern'] = '1';
+        }
         if(!isset($period)) {
             $dataForm['period_id'] = null;
             $dataForm['require_calibration'] = '0';
@@ -137,7 +148,7 @@ class RegisterController extends Controller {
             return redirect()->route('registers.index');
         } else {
             return redirect()->route('registers.edit', $id)->with(['errors' => 'edit failure']);
-        }
+        }        
     }
 
     /**

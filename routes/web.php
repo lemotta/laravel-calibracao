@@ -17,11 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'CalibrationController@index')->name('home');
+
+
 Route::resource('registers','RegisterController');
 
 Route::resource('calibration','CalibrationController');
 Route::get('print/{id}','CalibrationController@report')->name('calibration.print');
+Route::get('tag/{id}','CalibrationController@tag')->name('calibration.tag');
 
 Route::resource('models_eqp','ModelOfEquipamentController');
 

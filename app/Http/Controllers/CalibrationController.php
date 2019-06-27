@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Register;
@@ -15,22 +17,38 @@ class CalibrationController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    private $register;
+    //private $register;
     private $calibration;
 
     public function __construct(
-    Register $register, Calibration $calibration) {
+    //Register $register, 
+    Calibration $calibration) {
         $this->middleware('auth');
-        $this->register = $register;
+        //$this->register = $register;
         $this->calibration = $calibration;
     }
 
     public function index() {
         $calibration = $this->calibration->all();
+        /*$calibration = $this->calibration::query('SELECT
+          calibrations.register_id,
+          calibrations.id,
+          MAX(calibrations.next_calibration)
+          FROM
+          calibrations INNER JOIN registers ON calibrations.register_id = registers.id
+          WHERE
+          registers.active = 1
+          GROUP BY
+          calibrations.register_id
+          ORDER BY
+          calibrations.next_calibration ASC')
+                ->get();
+        dd($calibration);*/
         return view('calibration.index', compact('calibration'));
         /*
          * SELECT
           calibrations.register_id AS register_id,
+          calibrations.id AS calibration_id,
           MAX(calibrations.next_calibration) AS next_calibration
           FROM
           calibrations INNER JOIN registers ON calibrations.register_id = registers.id
@@ -38,6 +56,8 @@ class CalibrationController extends Controller {
           registers.active = 1
           GROUP BY
           register_id
+          ORDER BY
+          calibrations.next_calibration ASC
          */
     }
 
@@ -165,6 +185,30 @@ class CalibrationController extends Controller {
                     'images' => true
                 ])->loadView('calibration.print', compact('calibration', 'results', 'patterns', 'status'))->setPaper('a4', 'portrait');
         return $pdf->stream('formulario.pdf');
+    }
+
+    public function tag($id) {
+        $calibration = $this->calibration->find($id);
+        $content = "~JA\n" .
+                "^XA\n" .
+                "^PRA\n" .
+                "^FO150,030^AEN,8,8^FDCALIBRADO^FS\n" .
+                "^FO025,80^GB410,0,3^FS\n" .
+                "^FO025,120^ADN,8,4^FDSERIAL: " . $calibration->register->serialnumber . " / " . strtoupper($calibration->register->department->description) . " " . str_pad($calibration->register->number, 4, '0', STR_PAD_LEFT) . "^FS\n" .
+                "^FO025,150^ADN,8,4^FDVALIDADE: " . date('M j, Y', strtotime($calibration->next_calibration)) . "^FS\n" .
+                "^FO025,180^ADN,8,4^FDRESPONSAVEL: " . ucwords(auth()->user()->name) . "^FS\n" .
+                "^FO025,010^XGp14,1,1^FS\n" .
+                "^PQ0001,0,1,Y\n" .
+                "^BY1,2.5:1,9\n" .
+                "^XZ\n";
+        $diskLocal = Storage::disk('local');
+        $diskLocal->put("print.zpl", $content);
+        $output = shell_exec("smbclient " . env('ADDR_PRINT') .
+                " -U " . env('USER_PRINT') .
+                " --pass \"" . env('PASS_PRINT') . "\"" .
+                " -c \"put print.zpl print.zpl;\""
+        );
+        return redirect()->route('calibration.index');
     }
 
     /**
