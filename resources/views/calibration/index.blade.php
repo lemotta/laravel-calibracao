@@ -18,7 +18,7 @@
                         @foreach($calibration as $cal)
                         <tr>        
                             <td class="title-pg">{{$cal->register->department->description}} {{str_pad($cal->register->number,4,'0', STR_PAD_LEFT)}}</td>
-                            <td>{{$cal->register->number}}</td>                                    
+                            <td>{{$cal->register->serialnumber}}</td>                                    
                             <td>{{$cal->register->modelofequipament->typeofequipament->type}}</td>
                             <td>{{$cal->register->modelofequipament->model}}</td>
                             <td>{{$cal->laboratory->laboratory}}</td>

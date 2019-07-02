@@ -40,10 +40,10 @@ class RegisterTableSeeder extends Seeder {
         );
 
         $registers[] = array(
-            'department_id' => 8,
-            'number' => 4,
-            'serialnumber' => '79110444',
-            'modelofequipament_id' => 15,
+            'department_id' => 10,
+            'number' => 35,
+            'serialnumber' => '147096',
+            'modelofequipament_id' => 48,
             'require_calibration' => 1,
             'is_pattern' => 1,
             'active' => 1,
@@ -83,8 +83,8 @@ class RegisterTableSeeder extends Seeder {
 
         $registers[] = array(
             'department_id' => 11,
-            'number' => 13,
-            'serialnumber' => '4760',
+            'number' => 1,
+            'serialnumber' => 'D06Q62',
             'modelofequipament_id' => 37,
             'require_calibration' => 1,
             'is_pattern' => 1,
@@ -100,6 +100,34 @@ class RegisterTableSeeder extends Seeder {
             'number' => 20,
             'serialnumber' => '37867',
             'modelofequipament_id' => 50,
+            'require_calibration' => 0,
+            'is_pattern' => 1,
+            'active' => 1,
+            'period_id' => null,
+            'report_id' => null,
+            'instruction_id' => 75,
+            'contact' => 'lemotta@parks.com.br'
+        );
+        
+        $registers[] = array(
+            'department_id' => 2,
+            'number' => 44,
+            'serialnumber' => '00249',
+            'modelofequipament_id' => 33,
+            'require_calibration' => 1,
+            'is_pattern' => 0,
+            'active' => 1,
+            'period_id' => 4,
+            'report_id' => 6,
+            'instruction_id' => 75,
+            'contact' => 'lemotta@parks.com.br'
+        );
+        
+        $registers[] = array(
+            'department_id' => 8,
+            'number' => 16,
+            'serialnumber' => '00600',
+            'modelofequipament_id' => 39,
             'require_calibration' => 0,
             'is_pattern' => 1,
             'active' => 1,

@@ -17,48 +17,19 @@ class CalibrationController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    //private $register;
+    private $register;
     private $calibration;
 
     public function __construct(
-    //Register $register, 
-    Calibration $calibration) {
+    Register $register, Calibration $calibration) {
         $this->middleware('auth');
-        //$this->register = $register;
+        $this->register = $register;
         $this->calibration = $calibration;
     }
 
     public function index() {
         $calibration = $this->calibration->all();
-        /*$calibration = $this->calibration::query('SELECT
-          calibrations.register_id,
-          calibrations.id,
-          MAX(calibrations.next_calibration)
-          FROM
-          calibrations INNER JOIN registers ON calibrations.register_id = registers.id
-          WHERE
-          registers.active = 1
-          GROUP BY
-          calibrations.register_id
-          ORDER BY
-          calibrations.next_calibration ASC')
-                ->get();
-        dd($calibration);*/
-        return view('calibration.index', compact('calibration'));
-        /*
-         * SELECT
-          calibrations.register_id AS register_id,
-          calibrations.id AS calibration_id,
-          MAX(calibrations.next_calibration) AS next_calibration
-          FROM
-          calibrations INNER JOIN registers ON calibrations.register_id = registers.id
-          WHERE
-          registers.active = 1
-          GROUP BY
-          register_id
-          ORDER BY
-          calibrations.next_calibration ASC
-         */
+        return view('calibration.index', compact('calibration'));        
     }
 
     /**

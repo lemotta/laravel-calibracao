@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ReportTableSeeder::class);
         $this->call(LaboratoryTableSeeder::class);
         $this->call(RegisterTableSeeder::class);
+        $this->call(CalibrationTableSeeder::class);
     }
 }

@@ -21,6 +21,323 @@ const IMP = 0.01; //Incerteza da medição do padrao
 /*
  * Funções
  */
+
+function report_165_2vdc() {
+    var pattern = parseFloat($('#2vdc_pattern').val());
+    var array = [        
+        parseFloat($('#2vdc_l1').val()),
+        parseFloat($('#2vdc_l2').val()),
+        parseFloat($('#2vdc_l3').val()),
+        parseFloat($('#2vdc_l4').val()),
+        parseFloat($('#2vdc_l5').val())
+    ];    
+    var x = true;
+    for (var i = 0; array.length > i; i++) {
+        if (isNaN(array[i])) {
+            document.getElementById("2vdc_status_label").innerText = "ERRO";
+            document.getElementById("2vdc_status").value = "ERRO";
+            document.getElementById("2vdc_status_label").style.color = "red";
+            x = false;
+        }   
+    }    
+    if( x == true ) {        
+        var tolmax = pattern + (pattern * tol);
+        var tolmin = pattern - (pattern * tol);        
+        document.getElementById("2vdc_media_label").innerText = MM(array).toFixed(2).toString();
+        document.getElementById("2vdc_media").value = MM(array).toFixed(2).toString();
+        document.getElementById("2vdc_ert_label").innerText = ErT(pattern, array).toFixed(2).toString();
+        document.getElementById("2vdc_ert").value = ErT(pattern, array).toFixed(2).toString();
+        
+        if(ErT(pattern, array) == 0) {
+            document.getElementById("2vdc_status_label").innerText = "ERRO";
+            document.getElementById("2vdc_status").value = "ERRO";
+            document.getElementById("2vdc_status_label").style.color = "red";
+        } else {
+            if ((ErT(pattern, array) >= tolmin) && (ErT(pattern, array) <= tolmax)) {
+                document.getElementById("2vdc_status_label").innerText = "APROVADO";
+                document.getElementById("2vdc_status").value = "APROVADO";
+                document.getElementById("2vdc_status_label").style.color = "green";
+                document.getElementById("save").disabled = false;
+            } else {
+                document.getElementById("2vdc_status_label").innerText = "REPROVADO";
+                document.getElementById("2vdc_status").value = "REPROVADO";
+                document.getElementById("2vdc_status_label").style.color = "red";
+            }
+        }               
+    }    
+}
+
+function report_165_5vdc() {
+    var pattern = parseFloat($('#5vdc_pattern').val());
+    var array = [        
+        parseFloat($('#5vdc_l1').val()),
+        parseFloat($('#5vdc_l2').val()),
+        parseFloat($('#5vdc_l3').val()),
+        parseFloat($('#5vdc_l4').val()),
+        parseFloat($('#5vdc_l5').val())
+    ];    
+    var x = true;
+    for (var i = 0; array.length > i; i++) {
+        if (isNaN(array[i])) {
+            document.getElementById("5vdc_status_label").innerText = "ERRO";
+            document.getElementById("5vdc_status").value = "ERRO";
+            document.getElementById("5vdc_status_label").style.color = "red";
+            x = false;
+        }   
+    }    
+    if( x == true ) {        
+        var tolmax = pattern + (pattern * tol);
+        var tolmin = pattern - (pattern * tol);        
+        document.getElementById("5vdc_media_label").innerText = MM(array).toFixed(2).toString();
+        document.getElementById("5vdc_media").value = MM(array).toFixed(2).toString();
+        document.getElementById("5vdc_ert_label").innerText = ErT(pattern, array).toFixed(2).toString();
+        document.getElementById("5vdc_ert").value = ErT(pattern, array).toFixed(2).toString();
+        
+        if(ErT(pattern, array) == 0) {
+            document.getElementById("5vdc_status_label").innerText = "ERRO";
+            document.getElementById("5vdc_status").value = "ERRO";
+            document.getElementById("5vdc_status_label").style.color = "red";
+        } else {
+            if ((ErT(pattern, array) >= tolmin) && (ErT(pattern, array) <= tolmax)) {
+                document.getElementById("5vdc_status_label").innerText = "APROVADO";
+                document.getElementById("5vdc_status").value = "APROVADO";
+                document.getElementById("5vdc_status_label").style.color = "green";
+                document.getElementById("save").disabled = false;
+            } else {
+                document.getElementById("5vdc_status_label").innerText = "REPROVADO";
+                document.getElementById("5vdc_status").value = "REPROVADO";
+                document.getElementById("5vdc_status_label").style.color = "red";
+            }
+        }               
+    }    
+}
+
+function report_165_12vdc() {
+    var pattern = parseFloat($('#12vdc_pattern').val());
+    var array = [        
+        parseFloat($('#12vdc_l1').val()),
+        parseFloat($('#12vdc_l2').val()),
+        parseFloat($('#12vdc_l3').val()),
+        parseFloat($('#12vdc_l4').val()),
+        parseFloat($('#12vdc_l5').val())
+    ];    
+    var x = true;
+    for (var i = 0; array.length > i; i++) {
+        if (isNaN(array[i])) {
+            document.getElementById("12vdc_status_label").innerText = "ERRO";
+            document.getElementById("12vdc_status").value = "ERRO";
+            document.getElementById("12vdc_status_label").style.color = "red";
+            x = false;
+        }   
+    }    
+    if( x == true ) {        
+        var tolmax = pattern + (pattern * tol);
+        var tolmin = pattern - (pattern * tol);        
+        document.getElementById("12vdc_media_label").innerText = MM(array).toFixed(2).toString();
+        document.getElementById("12vdc_media").value = MM(array).toFixed(2).toString();
+        document.getElementById("12vdc_ert_label").innerText = ErT(pattern, array).toFixed(2).toString();
+        document.getElementById("12vdc_ert").value = ErT(pattern, array).toFixed(2).toString();
+        
+        if(ErT(pattern, array) == 0) {
+            document.getElementById("12vdc_status_label").innerText = "ERRO";
+            document.getElementById("12vdc_status").value = "ERRO";
+            document.getElementById("12vdc_status_label").style.color = "red";
+        } else {
+            if ((ErT(pattern, array) >= tolmin) && (ErT(pattern, array) <= tolmax)) {
+                document.getElementById("12vdc_status_label").innerText = "APROVADO";
+                document.getElementById("12vdc_status").value = "APROVADO";
+                document.getElementById("12vdc_status_label").style.color = "green";
+                document.getElementById("save").disabled = false;
+            } else {
+                document.getElementById("12vdc_status_label").innerText = "REPROVADO";
+                document.getElementById("12vdc_status").value = "REPROVADO";
+                document.getElementById("12vdc_status_label").style.color = "red";
+            }
+        }               
+    }    
+}
+
+function report_165_15vdc() {
+    var pattern = parseFloat($('#15vdc_pattern').val());
+    var array = [        
+        parseFloat($('#15vdc_l1').val()),
+        parseFloat($('#15vdc_l2').val()),
+        parseFloat($('#15vdc_l3').val()),
+        parseFloat($('#15vdc_l4').val()),
+        parseFloat($('#15vdc_l5').val())
+    ];    
+    var x = true;
+    for (var i = 0; array.length > i; i++) {
+        if (isNaN(array[i])) {
+            document.getElementById("15vdc_status_label").innerText = "ERRO";
+            document.getElementById("15vdc_status").value = "ERRO";
+            document.getElementById("15vdc_status_label").style.color = "red";
+            x = false;
+        }   
+    }    
+    if( x == true ) {        
+        var tolmax = pattern + (pattern * tol);
+        var tolmin = pattern - (pattern * tol);        
+        document.getElementById("15vdc_media_label").innerText = MM(array).toFixed(2).toString();
+        document.getElementById("15vdc_media").value = MM(array).toFixed(2).toString();
+        document.getElementById("15vdc_ert_label").innerText = ErT(pattern, array).toFixed(2).toString();
+        document.getElementById("15vdc_ert").value = ErT(pattern, array).toFixed(2).toString();
+        
+        if(ErT(pattern, array) == 0) {
+            document.getElementById("15vdc_status_label").innerText = "ERRO";
+            document.getElementById("15vdc_status").value = "ERRO";
+            document.getElementById("15vdc_status_label").style.color = "red";
+        } else {
+            if ((ErT(pattern, array) >= tolmin) && (ErT(pattern, array) <= tolmax)) {
+                document.getElementById("15vdc_status_label").innerText = "APROVADO";
+                document.getElementById("15vdc_status").value = "APROVADO";
+                document.getElementById("15vdc_status_label").style.color = "green";
+                document.getElementById("save").disabled = false;
+            } else {
+                document.getElementById("15vdc_status_label").innerText = "REPROVADO";
+                document.getElementById("15vdc_status").value = "REPROVADO";
+                document.getElementById("15vdc_status_label").style.color = "red";
+            }
+        }               
+    }    
+}
+
+function report_165_19vdc() {
+    var pattern = parseFloat($('#19vdc_pattern').val());
+    var array = [        
+        parseFloat($('#19vdc_l1').val()),
+        parseFloat($('#19vdc_l2').val()),
+        parseFloat($('#19vdc_l3').val()),
+        parseFloat($('#19vdc_l4').val()),
+        parseFloat($('#19vdc_l5').val())
+    ];    
+    var x = true;
+    for (var i = 0; array.length > i; i++) {
+        if (isNaN(array[i])) {
+            document.getElementById("19vdc_status_label").innerText = "ERRO";
+            document.getElementById("19vdc_status").value = "ERRO";
+            document.getElementById("19vdc_status_label").style.color = "red";
+            x = false;
+        }   
+    }    
+    if( x == true ) {        
+        var tolmax = pattern + (pattern * tol);
+        var tolmin = pattern - (pattern * tol);        
+        document.getElementById("19vdc_media_label").innerText = MM(array).toFixed(2).toString();
+        document.getElementById("19vdc_media").value = MM(array).toFixed(2).toString();
+        document.getElementById("19vdc_ert_label").innerText = ErT(pattern, array).toFixed(2).toString();
+        document.getElementById("19vdc_ert").value = ErT(pattern, array).toFixed(2).toString();
+        
+        if(ErT(pattern, array) == 0) {
+            document.getElementById("19vdc_status_label").innerText = "ERRO";
+            document.getElementById("19vdc_status").value = "ERRO";
+            document.getElementById("19vdc_status_label").style.color = "red";
+        } else {
+            if ((ErT(pattern, array) >= tolmin) && (ErT(pattern, array) <= tolmax)) {
+                document.getElementById("19vdc_status_label").innerText = "APROVADO";
+                document.getElementById("19vdc_status").value = "APROVADO";
+                document.getElementById("19vdc_status_label").style.color = "green";
+                document.getElementById("save").disabled = false;
+            } else {
+                document.getElementById("19vdc_status_label").innerText = "REPROVADO";
+                document.getElementById("19vdc_status").value = "REPROVADO";
+                document.getElementById("19vdc_status_label").style.color = "red";
+            }
+        }               
+    }    
+}
+
+function report_165_128vdc() {
+    var pattern = parseFloat($('#128vdc_pattern').val());
+    var array = [        
+        parseFloat($('#128vdc_l1').val()),
+        parseFloat($('#128vdc_l2').val()),
+        parseFloat($('#128vdc_l3').val()),
+        parseFloat($('#128vdc_l4').val()),
+        parseFloat($('#128vdc_l5').val())
+    ];    
+    var x = true;
+    for (var i = 0; array.length > i; i++) {
+        if (isNaN(array[i])) {
+            document.getElementById("128vdc_status_label").innerText = "ERRO";
+            document.getElementById("128vdc_status").value = "ERRO";
+            document.getElementById("128vdc_status_label").style.color = "red";
+            x = false;
+        }   
+    }    
+    if( x == true ) {        
+        var tolmax = pattern + (pattern * tol);
+        var tolmin = pattern - (pattern * tol);        
+        document.getElementById("128vdc_media_label").innerText = MM(array).toFixed(2).toString();
+        document.getElementById("128vdc_media").value = MM(array).toFixed(2).toString();
+        document.getElementById("128vdc_ert_label").innerText = ErT(pattern, array).toFixed(2).toString();
+        document.getElementById("128vdc_ert").value = ErT(pattern, array).toFixed(2).toString();
+        
+        if(ErT(pattern, array) == 0) {
+            document.getElementById("128vdc_status_label").innerText = "ERRO";
+            document.getElementById("128vdc_status").value = "ERRO";
+            document.getElementById("128vdc_status_label").style.color = "red";
+        } else {
+            if ((ErT(pattern, array) >= tolmin) && (ErT(pattern, array) <= tolmax)) {
+                document.getElementById("128vdc_status_label").innerText = "APROVADO";
+                document.getElementById("128vdc_status").value = "APROVADO";
+                document.getElementById("128vdc_status_label").style.color = "green";
+                document.getElementById("save").disabled = false;
+            } else {
+                document.getElementById("128vdc_status_label").innerText = "REPROVADO";
+                document.getElementById("128vdc_status").value = "REPROVADO";
+                document.getElementById("128vdc_status_label").style.color = "red";
+            }
+        }               
+    }    
+}
+
+function report_165_228vdc() {
+    var pattern = parseFloat($('#228vdc_pattern').val());
+    var array = [        
+        parseFloat($('#228vdc_l1').val()),
+        parseFloat($('#228vdc_l2').val()),
+        parseFloat($('#228vdc_l3').val()),
+        parseFloat($('#228vdc_l4').val()),
+        parseFloat($('#228vdc_l5').val())
+    ];    
+    var x = true;
+    for (var i = 0; array.length > i; i++) {
+        if (isNaN(array[i])) {
+            document.getElementById("228vdc_status_label").innerText = "ERRO";
+            document.getElementById("228vdc_status").value = "ERRO";
+            document.getElementById("228vdc_status_label").style.color = "red";
+            x = false;
+        }   
+    }    
+    if( x == true ) {        
+        var tolmax = pattern + (pattern * tol);
+        var tolmin = pattern - (pattern * tol);        
+        document.getElementById("228vdc_media_label").innerText = MM(array).toFixed(2).toString();
+        document.getElementById("228vdc_media").value = MM(array).toFixed(2).toString();
+        document.getElementById("228vdc_ert_label").innerText = ErT(pattern, array).toFixed(2).toString();
+        document.getElementById("228vdc_ert").value = ErT(pattern, array).toFixed(2).toString();
+        
+        if(ErT(pattern, array) == 0) {
+            document.getElementById("228vdc_status_label").innerText = "ERRO";
+            document.getElementById("228vdc_status").value = "ERRO";
+            document.getElementById("228vdc_status_label").style.color = "red";
+        } else {
+            if ((ErT(pattern, array) >= tolmin) && (ErT(pattern, array) <= tolmax)) {
+                document.getElementById("228vdc_status_label").innerText = "APROVADO";
+                document.getElementById("228vdc_status").value = "APROVADO";
+                document.getElementById("228vdc_status_label").style.color = "green";
+                document.getElementById("save").disabled = false;
+            } else {
+                document.getElementById("228vdc_status_label").innerText = "REPROVADO";
+                document.getElementById("228vdc_status").value = "REPROVADO";
+                document.getElementById("228vdc_status_label").style.color = "red";
+            }
+        }               
+    }    
+}
+
+
 function report_324_humidade() {
     var pattern = parseFloat($('#humidity_pattern').val());
     var array = [        

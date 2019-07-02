@@ -20,7 +20,7 @@ class CreateCalibrationsTable extends Migration
             $table->integer('laboratory_id')->unsigned();
             $table->foreign('laboratory_id')->references('id')->on('laboratories')->onDelete('no action');
             $table->string('certificate_calibration', 50)->default(null);
-            $table->text('results')->default(null);
+            $table->text('results')->nullable();
             $table->date('next_calibration');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('no action');            
