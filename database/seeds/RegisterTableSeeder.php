@@ -76,7 +76,7 @@ class RegisterTableSeeder extends Seeder {
             'is_pattern' => 1,
             'active' => 1,
             'period_id' => 4,
-            'report_id' => null,
+            'report_id' => 3,
             'instruction_id' => 75,
             'contact' => 'lemotta@parks.com.br'
         );

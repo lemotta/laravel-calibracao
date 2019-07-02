@@ -247,91 +247,91 @@ function report_165_19vdc() {
     }    
 }
 
-function report_165_128vdc() {
-    var pattern = parseFloat($('#128vdc_pattern').val());
+function report_165_128vac() {
+    var pattern = parseFloat($('#128vac_pattern').val());
     var array = [        
-        parseFloat($('#128vdc_l1').val()),
-        parseFloat($('#128vdc_l2').val()),
-        parseFloat($('#128vdc_l3').val()),
-        parseFloat($('#128vdc_l4').val()),
-        parseFloat($('#128vdc_l5').val())
+        parseFloat($('#128vac_l1').val()),
+        parseFloat($('#128vac_l2').val()),
+        parseFloat($('#128vac_l3').val()),
+        parseFloat($('#128vac_l4').val()),
+        parseFloat($('#128vac_l5').val())
     ];    
     var x = true;
     for (var i = 0; array.length > i; i++) {
         if (isNaN(array[i])) {
-            document.getElementById("128vdc_status_label").innerText = "ERRO";
-            document.getElementById("128vdc_status").value = "ERRO";
-            document.getElementById("128vdc_status_label").style.color = "red";
+            document.getElementById("128vac_status_label").innerText = "ERRO";
+            document.getElementById("128vac_status").value = "ERRO";
+            document.getElementById("128vac_status_label").style.color = "red";
             x = false;
         }   
     }    
     if( x == true ) {        
         var tolmax = pattern + (pattern * tol);
         var tolmin = pattern - (pattern * tol);        
-        document.getElementById("128vdc_media_label").innerText = MM(array).toFixed(2).toString();
-        document.getElementById("128vdc_media").value = MM(array).toFixed(2).toString();
-        document.getElementById("128vdc_ert_label").innerText = ErT(pattern, array).toFixed(2).toString();
-        document.getElementById("128vdc_ert").value = ErT(pattern, array).toFixed(2).toString();
+        document.getElementById("128vac_media_label").innerText = MM(array).toFixed(2).toString();
+        document.getElementById("128vac_media").value = MM(array).toFixed(2).toString();
+        document.getElementById("128vac_ert_label").innerText = ErT(pattern, array).toFixed(2).toString();
+        document.getElementById("128vac_ert").value = ErT(pattern, array).toFixed(2).toString();
         
         if(ErT(pattern, array) == 0) {
-            document.getElementById("128vdc_status_label").innerText = "ERRO";
-            document.getElementById("128vdc_status").value = "ERRO";
-            document.getElementById("128vdc_status_label").style.color = "red";
+            document.getElementById("128vac_status_label").innerText = "ERRO";
+            document.getElementById("128vac_status").value = "ERRO";
+            document.getElementById("128vac_status_label").style.color = "red";
         } else {
             if ((ErT(pattern, array) >= tolmin) && (ErT(pattern, array) <= tolmax)) {
-                document.getElementById("128vdc_status_label").innerText = "APROVADO";
-                document.getElementById("128vdc_status").value = "APROVADO";
-                document.getElementById("128vdc_status_label").style.color = "green";
+                document.getElementById("128vac_status_label").innerText = "APROVADO";
+                document.getElementById("128vac_status").value = "APROVADO";
+                document.getElementById("128vac_status_label").style.color = "green";
                 document.getElementById("save").disabled = false;
             } else {
-                document.getElementById("128vdc_status_label").innerText = "REPROVADO";
-                document.getElementById("128vdc_status").value = "REPROVADO";
-                document.getElementById("128vdc_status_label").style.color = "red";
+                document.getElementById("128vac_status_label").innerText = "REPROVADO";
+                document.getElementById("128vac_status").value = "REPROVADO";
+                document.getElementById("128vac_status_label").style.color = "red";
             }
         }               
     }    
 }
 
-function report_165_228vdc() {
-    var pattern = parseFloat($('#228vdc_pattern').val());
+function report_165_228vac() {
+    var pattern = parseFloat($('#228vac_pattern').val());
     var array = [        
-        parseFloat($('#228vdc_l1').val()),
-        parseFloat($('#228vdc_l2').val()),
-        parseFloat($('#228vdc_l3').val()),
-        parseFloat($('#228vdc_l4').val()),
-        parseFloat($('#228vdc_l5').val())
+        parseFloat($('#228vac_l1').val()),
+        parseFloat($('#228vac_l2').val()),
+        parseFloat($('#228vac_l3').val()),
+        parseFloat($('#228vac_l4').val()),
+        parseFloat($('#228vac_l5').val())
     ];    
     var x = true;
     for (var i = 0; array.length > i; i++) {
         if (isNaN(array[i])) {
-            document.getElementById("228vdc_status_label").innerText = "ERRO";
-            document.getElementById("228vdc_status").value = "ERRO";
-            document.getElementById("228vdc_status_label").style.color = "red";
+            document.getElementById("228vac_status_label").innerText = "ERRO";
+            document.getElementById("228vac_status").value = "ERRO";
+            document.getElementById("228vac_status_label").style.color = "red";
             x = false;
         }   
     }    
     if( x == true ) {        
         var tolmax = pattern + (pattern * tol);
         var tolmin = pattern - (pattern * tol);        
-        document.getElementById("228vdc_media_label").innerText = MM(array).toFixed(2).toString();
-        document.getElementById("228vdc_media").value = MM(array).toFixed(2).toString();
-        document.getElementById("228vdc_ert_label").innerText = ErT(pattern, array).toFixed(2).toString();
-        document.getElementById("228vdc_ert").value = ErT(pattern, array).toFixed(2).toString();
+        document.getElementById("228vac_media_label").innerText = MM(array).toFixed(2).toString();
+        document.getElementById("228vac_media").value = MM(array).toFixed(2).toString();
+        document.getElementById("228vac_ert_label").innerText = ErT(pattern, array).toFixed(2).toString();
+        document.getElementById("228vac_ert").value = ErT(pattern, array).toFixed(2).toString();
         
         if(ErT(pattern, array) == 0) {
-            document.getElementById("228vdc_status_label").innerText = "ERRO";
-            document.getElementById("228vdc_status").value = "ERRO";
-            document.getElementById("228vdc_status_label").style.color = "red";
+            document.getElementById("228vac_status_label").innerText = "ERRO";
+            document.getElementById("228vac_status").value = "ERRO";
+            document.getElementById("228vac_status_label").style.color = "red";
         } else {
             if ((ErT(pattern, array) >= tolmin) && (ErT(pattern, array) <= tolmax)) {
-                document.getElementById("228vdc_status_label").innerText = "APROVADO";
-                document.getElementById("228vdc_status").value = "APROVADO";
-                document.getElementById("228vdc_status_label").style.color = "green";
+                document.getElementById("228vac_status_label").innerText = "APROVADO";
+                document.getElementById("228vac_status").value = "APROVADO";
+                document.getElementById("228vac_status_label").style.color = "green";
                 document.getElementById("save").disabled = false;
             } else {
-                document.getElementById("228vdc_status_label").innerText = "REPROVADO";
-                document.getElementById("228vdc_status").value = "REPROVADO";
-                document.getElementById("228vdc_status_label").style.color = "red";
+                document.getElementById("228vac_status_label").innerText = "REPROVADO";
+                document.getElementById("228vac_status").value = "REPROVADO";
+                document.getElementById("228vac_status_label").style.color = "red";
             }
         }               
     }    

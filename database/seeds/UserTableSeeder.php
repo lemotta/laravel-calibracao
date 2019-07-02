@@ -3,19 +3,22 @@
 use Illuminate\Database\Seeder;
 use App\User;
 
-class UserTableSeeder extends Seeder
-{
+class UserTableSeeder extends Seeder {
+
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
         User::create([
-            'name' => 'lenilson dos santos motta',
-            'email' => 'lenilsonmotta@gmail.com',
-            'password' => bcrypt('Lenisabeva#270105')
-        ]);
+            'name' => 'Lenilson Motta',
+            'email' => 'lemotta@parks.com.br',
+            'password' => bcrypt('Lenisabeva@270105')
+                ], [
+            'name' => 'Leonei Rodes',
+            'email' => 'lrodes@parks.com.br',
+            'password' => bcrypt('lrodes1234')]);
     }
+
 }

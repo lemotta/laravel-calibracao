@@ -59,7 +59,7 @@
                             </tr>
                             <tr>
                                 <td width="100px"><b>2 VDC</b></td>
-                                <td><font size="1">{!! Form::text('temp_pattern', null, ['class' => 'form-control', 'id' => '2vdc_pattern'])!!}</font></td>
+                                <td><font size="1">{!! Form::text('2vdc_pattern', null, ['class' => 'form-control', 'id' => '2vdc_pattern'])!!}</font></td>
                                 <td>{!! Form::text('2vdc_l1', null, ['class' => 'form-control', 'id' => '2vdc_l1'])!!}</td>
                                 <td>{!! Form::text('2vdc_l2', null, ['class' => 'form-control', 'id' => '2vdc_l2'])!!}</td>
                                 <td>{!! Form::text('2vdc_l3', null, ['class' => 'form-control', 'id' => '2vdc_l3'])!!}</td>
@@ -75,7 +75,7 @@
                             </tr>
                             <tr>
                                 <td width="100px"><b>5 VDC</b></td>
-                                <td><font size="1">{!! Form::text('temp_pattern', null, ['class' => 'form-control', 'id' => '5vdc_pattern'])!!}</font></td>
+                                <td><font size="1">{!! Form::text('5vdc_pattern', null, ['class' => 'form-control', 'id' => '5vdc_pattern'])!!}</font></td>
                                 <td>{!! Form::text('5vdc_l1', null, ['class' => 'form-control', 'id' => '5vdc_l1'])!!}</td>
                                 <td>{!! Form::text('5vdc_l2', null, ['class' => 'form-control', 'id' => '5vdc_l2'])!!}</td>
                                 <td>{!! Form::text('5vdc_l3', null, ['class' => 'form-control', 'id' => '5vdc_l3'])!!}</td>
@@ -91,7 +91,7 @@
                             </tr>
                             <tr>
                                 <td width="100px"><b>12 VDC</b></td>
-                                <td><font size="1">{!! Form::text('temp_pattern', null, ['class' => 'form-control', 'id' => '12vdc_pattern'])!!}</font></td>
+                                <td><font size="1">{!! Form::text('12vdc_pattern', null, ['class' => 'form-control', 'id' => '12vdc_pattern'])!!}</font></td>
                                 <td>{!! Form::text('12vdc_l1', null, ['class' => 'form-control', 'id' => '12vdc_l1'])!!}</td>
                                 <td>{!! Form::text('12vdc_l2', null, ['class' => 'form-control', 'id' => '12vdc_l2'])!!}</td>
                                 <td>{!! Form::text('12vdc_l3', null, ['class' => 'form-control', 'id' => '12vdc_l3'])!!}</td>
@@ -107,7 +107,7 @@
                             </tr>
                             <tr>
                                 <td width="100px"><b>15 VDC</b></td>
-                                <td><font size="1">{!! Form::text('temp_pattern', null, ['class' => 'form-control', 'id' => '15vdc_pattern'])!!}</font></td>
+                                <td><font size="1">{!! Form::text('15vdc_pattern', null, ['class' => 'form-control', 'id' => '15vdc_pattern'])!!}</font></td>
                                 <td>{!! Form::text('15vdc_l1', null, ['class' => 'form-control', 'id' => '15vdc_l1'])!!}</td>
                                 <td>{!! Form::text('15vdc_l2', null, ['class' => 'form-control', 'id' => '15vdc_l2'])!!}</td>
                                 <td>{!! Form::text('15vdc_l3', null, ['class' => 'form-control', 'id' => '15vdc_l3'])!!}</td>
@@ -123,7 +123,7 @@
                             </tr>
                             <tr>
                                 <td width="100px"><b>19 VDC</b></td>
-                                <td><font size="1">{!! Form::text('temp_pattern', null, ['class' => 'form-control', 'id' => '19vdc_pattern'])!!}</font></td>
+                                <td><font size="1">{!! Form::text('19vdc_pattern', null, ['class' => 'form-control', 'id' => '19vdc_pattern'])!!}</font></td>
                                 <td>{!! Form::text('19vdc_l1', null, ['class' => 'form-control', 'id' => '19vdc_l1'])!!}</td>
                                 <td>{!! Form::text('19vdc_l2', null, ['class' => 'form-control', 'id' => '19vdc_l2'])!!}</td>
                                 <td>{!! Form::text('19vdc_l3', null, ['class' => 'form-control', 'id' => '19vdc_l3'])!!}</td>
@@ -155,35 +155,35 @@
                             </tr>
                             <tr>
                                 <td width="100px"><b>128 VAC</b></td>
-                                <td><font size="1">{!! Form::text('temp_pattern', null, ['class' => 'form-control', 'id' => '128vdc_pattern'])!!}</font></td>
-                                <td>{!! Form::text('128vdc_l1', null, ['class' => 'form-control', 'id' => '128vdc_l1'])!!}</td>
-                                <td>{!! Form::text('128vdc_l2', null, ['class' => 'form-control', 'id' => '128vdc_l2'])!!}</td>
-                                <td>{!! Form::text('128vdc_l3', null, ['class' => 'form-control', 'id' => '128vdc_l3'])!!}</td>
-                                <td>{!! Form::text('128vdc_l4', null, ['class' => 'form-control', 'id' => '128vdc_l4'])!!}</td>
-                                <td>{!! Form::text('128vdc_l5', null, ['class' => 'form-control', 'id' => '128vdc_l5'])!!}</td>                                
-                                <td>{!! Form::label('128vdc_media_label', '-', ['id' => '128vdc_media_label']) !!}</td>
-                                <td>{!! Form::label('128vdc_ert_label', '-', ['id' => '128vdc_ert_label']) !!}</td>
-                                {!! Form::hidden('128vdc_media', null, ['id' => '128vdc_media']) !!}
-                                {!! Form::hidden('128vdc_ert', null, ['id' => '128vdc_ert']) !!}
-                                {!! Form::hidden('128vdc_status', null, ['id' => '128vdc_status']) !!}
-                                <td><b><font size="1">{!! Form::label('128vdc_status_label', '-', ['id' => '128vdc_status_label']) !!}</font></b></td>
-                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'report_165_128vdc()'])!!}</td>                                
+                                <td><font size="1">{!! Form::text('128vac_pattern', null, ['class' => 'form-control', 'id' => '128vac_pattern'])!!}</font></td>
+                                <td>{!! Form::text('128vac_l1', null, ['class' => 'form-control', 'id' => '128vac_l1'])!!}</td>
+                                <td>{!! Form::text('128vac_l2', null, ['class' => 'form-control', 'id' => '128vac_l2'])!!}</td>
+                                <td>{!! Form::text('128vac_l3', null, ['class' => 'form-control', 'id' => '128vac_l3'])!!}</td>
+                                <td>{!! Form::text('128vac_l4', null, ['class' => 'form-control', 'id' => '128vac_l4'])!!}</td>
+                                <td>{!! Form::text('128vac_l5', null, ['class' => 'form-control', 'id' => '128vac_l5'])!!}</td>                                
+                                <td>{!! Form::label('128vac_media_label', '-', ['id' => '128vac_media_label']) !!}</td>
+                                <td>{!! Form::label('128vac_ert_label', '-', ['id' => '128vac_ert_label']) !!}</td>
+                                {!! Form::hidden('128vac_media', null, ['id' => '128vac_media']) !!}
+                                {!! Form::hidden('128vac_ert', null, ['id' => '128vac_ert']) !!}
+                                {!! Form::hidden('128vac_status', null, ['id' => '128vac_status']) !!}
+                                <td><b><font size="1">{!! Form::label('128vac_status_label', '-', ['id' => '128vac_status_label']) !!}</font></b></td>
+                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'report_165_128vac()'])!!}</td>                                
                             </tr>
                             <tr>
                                 <td width="100px"><b>228 VAC</b></td>
-                                <td><font size="1">{!! Form::text('temp_pattern', null, ['class' => 'form-control', 'id' => '228vdc_pattern'])!!}</font></td>
-                                <td>{!! Form::text('228vdc_l1', null, ['class' => 'form-control', 'id' => '228vdc_l1'])!!}</td>
-                                <td>{!! Form::text('228vdc_l2', null, ['class' => 'form-control', 'id' => '228vdc_l2'])!!}</td>
-                                <td>{!! Form::text('228vdc_l3', null, ['class' => 'form-control', 'id' => '228vdc_l3'])!!}</td>
-                                <td>{!! Form::text('228vdc_l4', null, ['class' => 'form-control', 'id' => '228vdc_l4'])!!}</td>
-                                <td>{!! Form::text('228vdc_l5', null, ['class' => 'form-control', 'id' => '228vdc_l5'])!!}</td>                                
-                                <td>{!! Form::label('228vdc_media_label', '-', ['id' => '228vdc_media_label']) !!}</td>
-                                <td>{!! Form::label('228vdc_ert_label', '-', ['id' => '228vdc_ert_label']) !!}</td>
-                                {!! Form::hidden('228vdc_media', null, ['id' => '228vdc_media']) !!}
-                                {!! Form::hidden('228vdc_ert', null, ['id' => '228vdc_ert']) !!}
-                                {!! Form::hidden('228vdc_status', null, ['id' => '228vdc_status']) !!}
-                                <td><b><font size="1">{!! Form::label('228vdc_status_label', '-', ['id' => '228vdc_status_label']) !!}</font></b></td>
-                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'report_165_228vdc()'])!!}</td>                                
+                                <td><font size="1">{!! Form::text('228vac_pattern', null, ['class' => 'form-control', 'id' => '228vac_pattern'])!!}</font></td>
+                                <td>{!! Form::text('228vac_l1', null, ['class' => 'form-control', 'id' => '228vac_l1'])!!}</td>
+                                <td>{!! Form::text('228vac_l2', null, ['class' => 'form-control', 'id' => '228vac_l2'])!!}</td>
+                                <td>{!! Form::text('228vac_l3', null, ['class' => 'form-control', 'id' => '228vac_l3'])!!}</td>
+                                <td>{!! Form::text('228vac_l4', null, ['class' => 'form-control', 'id' => '228vac_l4'])!!}</td>
+                                <td>{!! Form::text('228vac_l5', null, ['class' => 'form-control', 'id' => '228vac_l5'])!!}</td>                                
+                                <td>{!! Form::label('228vac_media_label', '-', ['id' => '228vac_media_label']) !!}</td>
+                                <td>{!! Form::label('228vac_ert_label', '-', ['id' => '228vac_ert_label']) !!}</td>
+                                {!! Form::hidden('228vac_media', null, ['id' => '228vac_media']) !!}
+                                {!! Form::hidden('228vac_ert', null, ['id' => '228vac_ert']) !!}
+                                {!! Form::hidden('228vac_status', null, ['id' => '228vac_status']) !!}
+                                <td><b><font size="1">{!! Form::label('228vac_status_label', '-', ['id' => '228vac_status_label']) !!}</font></b></td>
+                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'report_165_228vac()'])!!}</td>                                
                             </tr>
                             <tr align="center">        
                                 <th colspan = "11">{!! Form::submit('save', ['id' => 'save', 'class' => 'btn btn-primary', 'disabled'])!!}</th>
