@@ -32,7 +32,7 @@ class RegisterTableSeeder extends Seeder {
             'modelofequipament_id' => 46,
             'require_calibration' => 1,
             'is_pattern' => 1,
-            'active' => 1,
+            'active' => 0,
             'period_id' => 5,
             'report_id' => 6,
             'instruction_id' => 75,

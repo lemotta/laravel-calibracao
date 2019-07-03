@@ -22,6 +22,62 @@ const IMP = 0.01; //Incerteza da medição do padrao
  * Funções
  */
 
+function check_ok(model) {    
+    switch (model) {
+        case 'calcanheira':
+            var l1 = document.getElementById("calcanheira_l1");
+            var l2 = document.getElementById("calcanheira_l2");
+            var l3 = document.getElementById("calcanheira_l3");
+            var l4 = document.getElementById("calcanheira_l4");
+            var l5 = document.getElementById("calcanheira_l5");
+            if( l1.checked && l2.checked && l3.checked && l4.checked && l5.checked) {
+                document.getElementById("calcanheira_status_label").innerText = "APROVADO";
+                document.getElementById("calcanheira_status").value = "APROVADO";
+                document.getElementById("calcanheira_status_label").style.color = "green";
+                document.getElementById("save").disabled = false;
+            } else {
+                document.getElementById("calcanheira_status_label").innerText = "REPROVADO";
+                document.getElementById("calcanheira_status").value = "REPROVADO";
+                document.getElementById("calcanheira_status_label").style.color = "red";
+            }
+            break;
+        case 'biqueira':
+            var l1 = document.getElementById("biqueira_l1");
+            var l2 = document.getElementById("biqueira_l2");
+            var l3 = document.getElementById("biqueira_l3");
+            var l4 = document.getElementById("biqueira_l4");
+            var l5 = document.getElementById("biqueira_l5");
+            if( l1.checked && l2.checked && l3.checked && l4.checked && l5.checked) {
+                document.getElementById("biqueira_status_label").innerText = "APROVADO";
+                document.getElementById("biqueira_status").value = "APROVADO";
+                document.getElementById("biqueira_status_label").style.color = "green";
+                document.getElementById("save").disabled = false;
+            } else {
+                document.getElementById("biqueira_status_label").innerText = "REPROVADO";
+                document.getElementById("biqueira_status").value = "REPROVADO";
+                document.getElementById("biqueira_status_label").style.color = "red";
+            }
+            break;
+        case 'pulseira':
+            var l1 = document.getElementById("pulseira_l1");
+            var l2 = document.getElementById("pulseira_l2");
+            var l3 = document.getElementById("pulseira_l3");
+            var l4 = document.getElementById("pulseira_l4");
+            var l5 = document.getElementById("pulseira_l5");
+            if( l1.checked && l2.checked && l3.checked && l4.checked && l5.checked) {
+                document.getElementById("pulseira_status_label").innerText = "APROVADO";
+                document.getElementById("pulseira_status").value = "APROVADO";
+                document.getElementById("pulseira_status_label").style.color = "green";
+                document.getElementById("save").disabled = false;
+            } else {
+                document.getElementById("pulseira_status_label").innerText = "REPROVADO";
+                document.getElementById("pulseira_status").value = "REPROVADO";
+                document.getElementById("pulseira_status_label").style.color = "red";
+            }
+            break;
+    }       
+}
+
 function dc_pos_2() {
     var pattern = parseFloat($('#2vdc_pattern').val());
     var array = [        

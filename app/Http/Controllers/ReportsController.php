@@ -114,7 +114,21 @@ class ReportsController extends Controller {
     }
 
     public function report205($id) {
-        return 'REPORT 205 id: ' . $id;
+        $register = $this->register->find($id);
+        $pattern = Register::join('modelofequipaments', 'registers.modelofequipament_id', '=', 'modelofequipaments.id')
+                        ->join('departments', 'registers.department_id', '=', 'departments.id')
+                        ->join('typeofequipaments', 'modelofequipaments.typeofequipament_id', '=', 'typeofequipaments.id')
+                        ->select('registers.id', 'registers.number', 'departments.description')
+                        ->where([
+                            ['typeofequipaments.id', '=', $register->report->pattern1],
+                            ['registers.is_pattern', '=', '1'],
+                            ['registers.active', '=', '1']
+                        ])->get();
+        $pattern1 = array();
+        foreach ($pattern as $xpattern) {
+            $pattern1[$xpattern->id] = strtoupper($xpattern->description) . ' ' . str_pad($xpattern->number, 4, '0', STR_PAD_LEFT);
+        }                
+        return view('report.205', compact('register', 'pattern1'));
     }
 
     public function report207($id) {
