@@ -15,7 +15,7 @@ class LaboratoryTableSeeder extends Seeder
         $laboratories = [
             'AUTENTICA',
             'CALIBRATEC',
-            'IAM',
+            'IAM LABCAL',
             'CETEMP SENAI',
             'LABELO PUC',
             'TRI',

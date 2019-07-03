@@ -136,6 +136,34 @@ class RegisterTableSeeder extends Seeder {
             'instruction_id' => 75,
             'contact' => 'lemotta@parks.com.br'
         );
+        
+        $registers[] = array(
+            'department_id' => 11,
+            'number' => 19,
+            'serialnumber' => '203-12299',
+            'modelofequipament_id' => 11,
+            'require_calibration' => 1,
+            'is_pattern' => 0,
+            'active' => 1,
+            'period_id' => 4,
+            'report_id' => null,
+            'instruction_id' => 75,
+            'contact' => 'lemotta@parks.com.br'
+        );
+        
+        $registers[] = array(
+            'department_id' => 8,
+            'number' => 5,
+            'serialnumber' => '100081',
+            'modelofequipament_id' => 2,
+            'require_calibration' => 0,
+            'is_pattern' => 1,
+            'active' => 1,
+            'period_id' => null,
+            'report_id' => null,
+            'instruction_id' => 75,
+            'contact' => 'lemotta@parks.com.br'
+        );
 
         for ($i = 0; $i < count($registers); $i++) {
             Register::create([

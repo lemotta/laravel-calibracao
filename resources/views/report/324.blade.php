@@ -71,7 +71,7 @@
                                 {!! Form::hidden('temp_ert', null, ['id' => 'temp_ert']) !!}
                                 {!! Form::hidden('temp_status', null, ['id' => 'temp_status']) !!}
                                 <td><b><font size="1">{!! Form::label('temp_status_label', '-', ['id' => 'temp_status_label']) !!}</font></b></td>
-                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'report_324_temperatura()'])!!}</td>                                
+                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'temperatura()'])!!}</td>                                
                             </tr>
                             <tr>
                                 <td width="100px"><b>Humidade</b></td>
@@ -87,7 +87,7 @@
                                 {!! Form::hidden('humidity_ert', null, ['id' => 'humidity_ert']) !!}
                                 {!! Form::hidden('humidity_status', null, ['id' => 'humidity_status']) !!}
                                 <td><b><font size="1">{!! Form::label('humidity_status', '-', ['id' => 'humidity_status_label']) !!}</font></b></td>
-                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'report_324_humidade()'])!!}</td>
+                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'humidade()'])!!}</td>
                             </tr>
                             <tr align="center">        
                                 <th colspan = "11">{!! Form::submit('save', ['id' => 'save', 'class' => 'btn btn-primary', 'disabled'])!!}</th>

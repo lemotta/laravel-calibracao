@@ -22,7 +22,7 @@ const IMP = 0.01; //Incerteza da medição do padrao
  * Funções
  */
 
-function report_165_2vdc() {
+function dc_pos_2() {
     var pattern = parseFloat($('#2vdc_pattern').val());
     var array = [        
         parseFloat($('#2vdc_l1').val()),
@@ -67,7 +67,7 @@ function report_165_2vdc() {
     }    
 }
 
-function report_165_5vdc() {
+function dc_pos_5() {
     var pattern = parseFloat($('#5vdc_pattern').val());
     var array = [        
         parseFloat($('#5vdc_l1').val()),
@@ -112,7 +112,7 @@ function report_165_5vdc() {
     }    
 }
 
-function report_165_12vdc() {
+function dc_pos_12() {
     var pattern = parseFloat($('#12vdc_pattern').val());
     var array = [        
         parseFloat($('#12vdc_l1').val()),
@@ -157,7 +157,52 @@ function report_165_12vdc() {
     }    
 }
 
-function report_165_15vdc() {
+function dc_neg_12() {
+    var pattern = parseFloat($('#n12vdc_pattern').val());
+    var array = [        
+        parseFloat($('#n12vdc_l1').val()),
+        parseFloat($('#n12vdc_l2').val()),
+        parseFloat($('#n12vdc_l3').val()),
+        parseFloat($('#n12vdc_l4').val()),
+        parseFloat($('#n12vdc_l5').val())
+    ];    
+    var x = true;
+    for (var i = 0; array.length > i; i++) {
+        if (isNaN(array[i])) {
+            document.getElementById("n12vdc_status_label").innerText = "ERRO";
+            document.getElementById("n12vdc_status").value = "ERRO";
+            document.getElementById("n12vdc_status_label").style.color = "red";
+            x = false;
+        }   
+    }    
+    if( x == true ) {        
+        var tolmin = pattern + (pattern * tol);
+        var tolmax = pattern - (pattern * tol);        
+        document.getElementById("n12vdc_media_label").innerText = MM(array).toFixed(2).toString();
+        document.getElementById("n12vdc_media").value = MM(array).toFixed(2).toString();
+        document.getElementById("n12vdc_ert_label").innerText = ErT(pattern, array).toFixed(2).toString();
+        document.getElementById("n12vdc_ert").value = ErT(pattern, array).toFixed(2).toString();
+        
+        if(ErT(pattern, array) == 0) {
+            document.getElementById("n12vdc_status_label").innerText = "ERRO";
+            document.getElementById("n12vdc_status").value = "ERRO";
+            document.getElementById("n12vdc_status_label").style.color = "red";
+        } else {
+            if ((ErT(pattern, array) >= tolmin) && (ErT(pattern, array) <= tolmax)) {
+                document.getElementById("n12vdc_status_label").innerText = "APROVADO";
+                document.getElementById("n12vdc_status").value = "APROVADO";
+                document.getElementById("n12vdc_status_label").style.color = "green";
+                document.getElementById("save").disabled = false;
+            } else {
+                document.getElementById("n12vdc_status_label").innerText = "REPROVADO";
+                document.getElementById("n12vdc_status").value = "REPROVADO";
+                document.getElementById("n12vdc_status_label").style.color = "red";
+            }
+        }               
+    }    
+}
+
+function dc_pos_15() {
     var pattern = parseFloat($('#15vdc_pattern').val());
     var array = [        
         parseFloat($('#15vdc_l1').val()),
@@ -202,7 +247,7 @@ function report_165_15vdc() {
     }    
 }
 
-function report_165_19vdc() {
+function dc_pos_19() {
     var pattern = parseFloat($('#19vdc_pattern').val());
     var array = [        
         parseFloat($('#19vdc_l1').val()),
@@ -247,7 +292,7 @@ function report_165_19vdc() {
     }    
 }
 
-function report_165_128vac() {
+function ac_128() {
     var pattern = parseFloat($('#128vac_pattern').val());
     var array = [        
         parseFloat($('#128vac_l1').val()),
@@ -292,7 +337,7 @@ function report_165_128vac() {
     }    
 }
 
-function report_165_228vac() {
+function ac_228() {
     var pattern = parseFloat($('#228vac_pattern').val());
     var array = [        
         parseFloat($('#228vac_l1').val()),
@@ -338,7 +383,7 @@ function report_165_228vac() {
 }
 
 
-function report_324_humidade() {
+function humidade() {
     var pattern = parseFloat($('#humidity_pattern').val());
     var array = [        
         parseFloat($('#humidity_l1').val()),
@@ -383,7 +428,7 @@ function report_324_humidade() {
     }    
 }
 
-function report_324_temperatura() {
+function temperatura() {
     var pattern = parseFloat($('#temp_pattern').val());
     var array = [        
         parseFloat($('#temp_l1').val()),

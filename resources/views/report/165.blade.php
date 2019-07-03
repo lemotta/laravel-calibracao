@@ -71,7 +71,7 @@
                                 {!! Form::hidden('2vdc_ert', null, ['id' => '2vdc_ert']) !!}
                                 {!! Form::hidden('2vdc_status', null, ['id' => '2vdc_status']) !!}
                                 <td><b><font size="1">{!! Form::label('2vdc_status_label', '-', ['id' => '2vdc_status_label']) !!}</font></b></td>
-                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'report_165_2vdc()'])!!}</td>                                
+                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'dc_pos_2()'])!!}</td>                                
                             </tr>
                             <tr>
                                 <td width="100px"><b>5 VDC</b></td>
@@ -87,7 +87,7 @@
                                 {!! Form::hidden('5vdc_ert', null, ['id' => '5vdc_ert']) !!}
                                 {!! Form::hidden('5vdc_status', null, ['id' => '5vdc_status']) !!}
                                 <td><b><font size="1">{!! Form::label('5vdc_status_label', '-', ['id' => '5vdc_status_label']) !!}</font></b></td>
-                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'report_165_5vdc()'])!!}</td>                                
+                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'dc_pos_5()'])!!}</td>                                
                             </tr>
                             <tr>
                                 <td width="100px"><b>12 VDC</b></td>
@@ -103,7 +103,7 @@
                                 {!! Form::hidden('12vdc_ert', null, ['id' => '12vdc_ert']) !!}
                                 {!! Form::hidden('12vdc_status', null, ['id' => '12vdc_status']) !!}
                                 <td><b><font size="1">{!! Form::label('12vdc_status_label', '-', ['id' => '12vdc_status_label']) !!}</font></b></td>
-                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'report_165_12vdc()'])!!}</td>                                
+                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'dc_pos_12()'])!!}</td>                                
                             </tr>
                             <tr>
                                 <td width="100px"><b>15 VDC</b></td>
@@ -119,7 +119,7 @@
                                 {!! Form::hidden('15vdc_ert', null, ['id' => '15vdc_ert']) !!}
                                 {!! Form::hidden('15vdc_status', null, ['id' => '15vdc_status']) !!}
                                 <td><b><font size="1">{!! Form::label('15vdc_status_label', '-', ['id' => '15vdc_status_label']) !!}</font></b></td>
-                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'report_165_15vdc()'])!!}</td>                                
+                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'dc_pos_15()'])!!}</td>                                
                             </tr>
                             <tr>
                                 <td width="100px"><b>19 VDC</b></td>
@@ -135,7 +135,7 @@
                                 {!! Form::hidden('19vdc_ert', null, ['id' => '19vdc_ert']) !!}
                                 {!! Form::hidden('19vdc_status', null, ['id' => '19vdc_status']) !!}
                                 <td><b><font size="1">{!! Form::label('19vdc_status_label', '-', ['id' => '19vdc_status_label']) !!}</font></b></td>
-                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'report_165_19vdc()'])!!}</td>                                
+                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'dc_pos_19()'])!!}</td>                                
                             </tr>
                             <tr align="center">        
                                 <th colspan = "11">LEITURAS AC</th>
@@ -167,7 +167,7 @@
                                 {!! Form::hidden('128vac_ert', null, ['id' => '128vac_ert']) !!}
                                 {!! Form::hidden('128vac_status', null, ['id' => '128vac_status']) !!}
                                 <td><b><font size="1">{!! Form::label('128vac_status_label', '-', ['id' => '128vac_status_label']) !!}</font></b></td>
-                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'report_165_128vac()'])!!}</td>                                
+                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'ac_128()'])!!}</td>                                
                             </tr>
                             <tr>
                                 <td width="100px"><b>228 VAC</b></td>
@@ -183,7 +183,7 @@
                                 {!! Form::hidden('228vac_ert', null, ['id' => '228vac_ert']) !!}
                                 {!! Form::hidden('228vac_status', null, ['id' => '228vac_status']) !!}
                                 <td><b><font size="1">{!! Form::label('228vac_status_label', '-', ['id' => '228vac_status_label']) !!}</font></b></td>
-                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'report_165_228vac()'])!!}</td>                                
+                                <td>{!! Form::button('calc', ['class' => 'btn btn-primary', 'onclick' => 'ac_228()'])!!}</td>                                
                             </tr>
                             <tr align="center">        
                                 <th colspan = "11">{!! Form::submit('save', ['id' => 'save', 'class' => 'btn btn-primary', 'disabled'])!!}</th>

@@ -29,6 +29,15 @@ class CalibrationTableSeeder extends Seeder {
             'next_calibration' => '2021-06-27',
             'user_id' => 1
         );
+        
+        $calibration[] = array(
+            'register_id' => 10,
+            'laboratory_id' => 3,
+            'certificate_calibration' => 'AM00211/19',
+            'results' => null,
+            'next_calibration' => '2020-01-14',
+            'user_id' => 1
+        );
 
         for ($i = 0; $i < count($calibration); $i++) {
             Calibration::create([
