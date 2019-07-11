@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html>
+    <style>
+        @page {
+            margin: 50px 50px 120px 50px;
+        }        
+
+        .header, .footer {
+            position: fixed;
+        }
+
+        .header {
+            top: 0;
+            margin: 80px 0px;            
+        }
+
+        .footer {
+            bottom: 0 ;
+        }
+        
+        .pagenum:before {
+            content: counter(page);
+        }       
+    </style>    
     <head>
         <link href="/var/www/html/laravel-calibracao/public/assets/register/css/style.css" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>Formulario</title>
-    </head>    
-    <body>
+    </head>
+    <div class="header">
         <div class="head_logo">
             <img src="/var/www/html/laravel-calibracao/storage/app/public/logo.png" class="head_logo">
             <label class="head_logo float-right">
@@ -13,6 +35,18 @@
             </label>            
         </div>
         <hr>
+    </div>
+    <div class="footer">
+        <pre><em>   
+Observação:
+  Este Registro de Calibração é exclusivo para o Equipamento Calibrado, não sendo
+  extensivo a quaisquer lotes mesmo que similares.
+<b>
+FOIN {{$calibration->register->report->number}} - 11/07/2019     PARKS S.A. Comunicações Digitais              Página <span class="pagenum"></span>    
+</b>
+        </em></pre>        
+    </div> 
+    <body class="corpo">        
         <div class="form-group alert alert-dark">
             <h5>
                 REGISTRO DE CALIBRAÇÃO
@@ -75,7 +109,7 @@
                 @foreach($patterns as $pattern)
                 <p>
                     <b>ID: </b>
-                    <em>
+                    <em>                        
                         @if(isset($pattern->department->description))
                         {{$pattern->department->description}} {{str_pad($pattern->number,4,'0', STR_PAD_LEFT)}}
                         @else
@@ -124,33 +158,39 @@
                     </em>
                 </p>
                 <p>
-                    <b>Cert. de Calibração: </b>
-                    @if( isset($pattern->certificate_calibration) )
+                    <b>Cert. de Calibração: </b>                    
                     <em>
+                        @if( isset($pattern->certificate_calibration) )
                         {{ $pattern->certificate_calibration }}
-                    </em>
-                    @else
-                    <em>
-                        Equipamento ajustado momento da utilização.
-                    </em>
-                    @endif
-                </p>
-                @if( isset($pattern->next_calibration) )
+                        @else
+                        @if( isset($pattern->next_calibration) )
+                        {{ $pattern->id . '/' . date('Y', strtotime($pattern->created_at))}}
+                        @else
+                        Este padrão, não requer calibração! Terá seu possível ajuste, no momento da utilização.
+                        @endif
+                        @endif
+                    </em> 
+                </p>                
                 <p>
-                    <b>Validade: </b>                    
+                    <b>Validade: </b>
                     <em>
+                        @if( isset($pattern->next_calibration) )
                         {{ date('M j, Y', strtotime($pattern->next_calibration)) }}
-                    </em>                    
-                </p>
-                @endif
-                @if( isset($pattern->laboratory_id) )
+                        @else
+                        Este padrão, não requer calibração.
+                        @endif
+                    </em>               
+                </p>                
                 <p>
-                    <b>Laborátorio: </b>
+                    <b>Laborátorio: </b>                    
                     <em>
+                        @if( isset($pattern->laboratory_id) )
                         {{ $pattern->laboratory->laboratory }}
+                        @else
+                        Interno
+                        @endif
                     </em>
-                </p>
-                @endif
+                </p>                
                 <hr>
                 @endforeach            
             </div>
@@ -218,6 +258,11 @@
                 </div>                        
             </div>        
     </body>
+    
+    
+    
+       
+
 </html>
 <!--/var/www/html/laravel-calibracao/public/assets/register/css/style.css--!>
 <!--{{ asset('assets/register/css/style.css') }}--!>

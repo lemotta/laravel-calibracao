@@ -3,7 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/laravel-calibracao/resources/views/calibration/index.blade.php</file>
+            <file>file:/var/www/html/laravel-calibracao/resources/views/calibration/print.blade.php</file>
+            <file>file:/var/www/html/laravel-calibracao/resources/views/calibration/test_print.blade.php</file>
+            <file>file:/var/www/html/laravel-calibracao/app/Http/Controllers/CalibrationController.php</file>
+            <file>file:/var/www/html/laravel-calibracao/public/assets/register/css/style.css</file>
         </group>
     </open-files>
 </project-private>

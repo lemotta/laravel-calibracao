@@ -49,31 +49,31 @@
                             </tr>
                             <tr>
                                 <td width="100px"><b>Calcanheira</b></td>
-                                <td>{!! Form::checkbox('calcanheira_l1', '1', false, [ 'class' => 'form-control', 'id' => 'calcanheira_l1', 'onclick' => 'check_ok("calcanheira")']) !!}</td>
-                                <td>{!! Form::checkbox('calcanheira_l2', '1', false, [ 'class' => 'form-control', 'id' => 'calcanheira_l2', 'onclick' => 'check_ok("calcanheira")']) !!}</td>
-                                <td>{!! Form::checkbox('calcanheira_l3', '1', false, [ 'class' => 'form-control', 'id' => 'calcanheira_l3', 'onclick' => 'check_ok("calcanheira")']) !!}</td>
-                                <td>{!! Form::checkbox('calcanheira_l4', '1', false, [ 'class' => 'form-control', 'id' => 'calcanheira_l4', 'onclick' => 'check_ok("calcanheira")']) !!}</td>
-                                <td>{!! Form::checkbox('calcanheira_l5', '1', false, [ 'class' => 'form-control', 'id' => 'calcanheira_l5', 'onclick' => 'check_ok("calcanheira")']) !!}</td>
+                                <td>{!! Form::checkbox('calcanheira_l1', 'ok', false, [ 'class' => 'form-control', 'id' => 'calcanheira_l1', 'onclick' => 'check_ok("calcanheira")']) !!}</td>
+                                <td>{!! Form::checkbox('calcanheira_l2', 'ok', false, [ 'class' => 'form-control', 'id' => 'calcanheira_l2', 'onclick' => 'check_ok("calcanheira")']) !!}</td>
+                                <td>{!! Form::checkbox('calcanheira_l3', 'ok', false, [ 'class' => 'form-control', 'id' => 'calcanheira_l3', 'onclick' => 'check_ok("calcanheira")']) !!}</td>
+                                <td>{!! Form::checkbox('calcanheira_l4', 'ok', false, [ 'class' => 'form-control', 'id' => 'calcanheira_l4', 'onclick' => 'check_ok("calcanheira")']) !!}</td>
+                                <td>{!! Form::checkbox('calcanheira_l5', 'ok', false, [ 'class' => 'form-control', 'id' => 'calcanheira_l5', 'onclick' => 'check_ok("calcanheira")']) !!}</td>
                                 {!! Form::hidden('calcanheira_status', null, ['id' => 'calcanheira_status']) !!}
                                 <td><b><font size="1">{!! Form::label('calcanheira_status_label', '-', ['id' => 'calcanheira_status_label']) !!}</font></b></td>
                             </tr>
                             <tr>
                                 <td width="100px"><b>Biqueira</b></td>
-                                <td>{!! Form::checkbox('biqueira_l1', '1', false, [ 'class' => 'form-control', 'id' => 'biqueira_l1', 'onclick' => 'check_ok("biqueira")']) !!}</td>
-                                <td>{!! Form::checkbox('biqueira_l2', '1', false, [ 'class' => 'form-control', 'id' => 'biqueira_l2', 'onclick' => 'check_ok("biqueira")']) !!}</td>
-                                <td>{!! Form::checkbox('biqueira_l3', '1', false, [ 'class' => 'form-control', 'id' => 'biqueira_l3', 'onclick' => 'check_ok("biqueira")']) !!}</td>
-                                <td>{!! Form::checkbox('biqueira_l4', '1', false, [ 'class' => 'form-control', 'id' => 'biqueira_l4', 'onclick' => 'check_ok("biqueira")']) !!}</td>
-                                <td>{!! Form::checkbox('biqueira_l5', '1', false, [ 'class' => 'form-control', 'id' => 'biqueira_l5', 'onclick' => 'check_ok("biqueira")']) !!}</td>
+                                <td>{!! Form::checkbox('biqueira_l1', 'ok', false, [ 'class' => 'form-control', 'id' => 'biqueira_l1', 'onclick' => 'check_ok("biqueira")']) !!}</td>
+                                <td>{!! Form::checkbox('biqueira_l2', 'ok', false, [ 'class' => 'form-control', 'id' => 'biqueira_l2', 'onclick' => 'check_ok("biqueira")']) !!}</td>
+                                <td>{!! Form::checkbox('biqueira_l3', 'ok', false, [ 'class' => 'form-control', 'id' => 'biqueira_l3', 'onclick' => 'check_ok("biqueira")']) !!}</td>
+                                <td>{!! Form::checkbox('biqueira_l4', 'ok', false, [ 'class' => 'form-control', 'id' => 'biqueira_l4', 'onclick' => 'check_ok("biqueira")']) !!}</td>
+                                <td>{!! Form::checkbox('biqueira_l5', 'ok', false, [ 'class' => 'form-control', 'id' => 'biqueira_l5', 'onclick' => 'check_ok("biqueira")']) !!}</td>
                                 {!! Form::hidden('biqueira_status', null, ['id' => 'biqueira_status']) !!}
                                 <td><b><font size="1">{!! Form::label('biqueira_status_label', '-', ['id' => 'biqueira_status_label']) !!}</font></b></td>                                
                             </tr>
                             <tr>
                                 <td width="100px"><b>Pulseira</b></td>
-                                <td>{!! Form::checkbox('pulseira_l1', '1', false, [ 'class' => 'form-control', 'id' => 'pulseira_l1', 'onclick' => 'check_ok("pulseira")']) !!}</td>
-                                <td>{!! Form::checkbox('pulseira_l2', '1', false, [ 'class' => 'form-control', 'id' => 'pulseira_l2', 'onclick' => 'check_ok("pulseira")']) !!}</td>
-                                <td>{!! Form::checkbox('pulseira_l3', '1', false, [ 'class' => 'form-control', 'id' => 'pulseira_l3', 'onclick' => 'check_ok("pulseira")']) !!}</td>
-                                <td>{!! Form::checkbox('pulseira_l4', '1', false, [ 'class' => 'form-control', 'id' => 'pulseira_l4', 'onclick' => 'check_ok("pulseira")']) !!}</td>
-                                <td>{!! Form::checkbox('pulseira_l5', '1', false, [ 'class' => 'form-control', 'id' => 'pulseira_l5', 'onclick' => 'check_ok("pulseira")']) !!}</td>
+                                <td>{!! Form::checkbox('pulseira_l1', 'ok', false, [ 'class' => 'form-control', 'id' => 'pulseira_l1', 'onclick' => 'check_ok("pulseira")']) !!}</td>
+                                <td>{!! Form::checkbox('pulseira_l2', 'ok', false, [ 'class' => 'form-control', 'id' => 'pulseira_l2', 'onclick' => 'check_ok("pulseira")']) !!}</td>
+                                <td>{!! Form::checkbox('pulseira_l3', 'ok', false, [ 'class' => 'form-control', 'id' => 'pulseira_l3', 'onclick' => 'check_ok("pulseira")']) !!}</td>
+                                <td>{!! Form::checkbox('pulseira_l4', 'ok', false, [ 'class' => 'form-control', 'id' => 'pulseira_l4', 'onclick' => 'check_ok("pulseira")']) !!}</td>
+                                <td>{!! Form::checkbox('pulseira_l5', 'ok', false, [ 'class' => 'form-control', 'id' => 'pulseira_l5', 'onclick' => 'check_ok("pulseira")']) !!}</td>
                                 {!! Form::hidden('pulseira_status', null, ['id' => 'pulseira_status']) !!}
                                 <td><b><font size="1">{!! Form::label('pulseira_status_label', '-', ['id' => 'pulseira_status_label']) !!}</font></b></td>                                
                             </tr>

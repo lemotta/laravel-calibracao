@@ -136,7 +136,34 @@ class ReportsController extends Controller {
     }
 
     public function report213($id) {
-        return 'REPORT 213 id: ' . $id;
+        $register = $this->register->find($id);
+        $pattern = Register::join('modelofequipaments', 'registers.modelofequipament_id', '=', 'modelofequipaments.id')
+                        ->join('departments', 'registers.department_id', '=', 'departments.id')
+                        ->join('typeofequipaments', 'modelofequipaments.typeofequipament_id', '=', 'typeofequipaments.id')
+                        ->select('registers.id', 'registers.number', 'departments.description')
+                        ->where([
+                            ['typeofequipaments.id', '=', $register->report->pattern1],
+                            ['registers.is_pattern', '=', '1'],
+                            ['registers.active', '=', '1']
+                        ])->get();
+        $pattern1 = array();
+        foreach ($pattern as $xpattern) {
+            $pattern1[$xpattern->id] = strtoupper($xpattern->description) . ' ' . str_pad($xpattern->number, 4, '0', STR_PAD_LEFT);
+        }
+        $pattern = Register::join('modelofequipaments', 'registers.modelofequipament_id', '=', 'modelofequipaments.id')
+                        ->join('departments', 'registers.department_id', '=', 'departments.id')
+                        ->join('typeofequipaments', 'modelofequipaments.typeofequipament_id', '=', 'typeofequipaments.id')
+                        ->select('registers.id', 'registers.number', 'departments.description')
+                        ->where([
+                            ['typeofequipaments.id', '=', $register->report->pattern2],
+                            ['registers.is_pattern', '=', '1'],
+                            ['registers.active', '=', '1']
+                        ])->get();
+        $pattern2 = array();
+        foreach ($pattern as $xpattern) {
+            $pattern2[$xpattern->id] = strtoupper($xpattern->description) . ' ' . str_pad($xpattern->number, 4, '0', STR_PAD_LEFT);
+        }        
+        return view('report.213', compact('register', 'pattern1', 'pattern2'));
     }
 
     public function report324($id) {

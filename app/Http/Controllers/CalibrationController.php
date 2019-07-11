@@ -29,7 +29,7 @@ class CalibrationController extends Controller {
 
     public function index() {
         $calibration = $this->calibration->all();
-        return view('calibration.index', compact('calibration'));        
+        return view('calibration.index', compact('calibration'));
     }
 
     /**
@@ -49,7 +49,6 @@ class CalibrationController extends Controller {
      */
     public function store(Request $request) {
         $dataForm = $request->all();
-
         $id = $dataForm['id'];
         unset($dataForm['_token']);
         unset($dataForm['id']);
@@ -61,7 +60,7 @@ class CalibrationController extends Controller {
 
         if (count($dataForm) > 3) { // array maior, indica leituras de formulario            
             foreach ($dataForm as $key) {
-                if ($key == 'REPROVADO') {
+                if ($key == 'REPROVADO' || $key == 'ERRO') {
                     $status = 'REPROVADO';
                 }
             }
@@ -75,19 +74,24 @@ class CalibrationController extends Controller {
                 }
                 $cal_pattern = array();
                 for ($i = 0; $i < count($patterns); $i++) {
-                    $calpattern = $this->register->calibration($patterns[$i]);
-                    if (isset($calpattern)) {
-                        array_splice($patterns, $i, 1);
-                        if (strtotime(date('Y-m-d')) > strtotime($calpattern->next_calibration)) {
-                            $msg = strtoupper($calpattern->register->department->description) . ' ' . str_pad($calpattern->register->number, 4, '0', STR_PAD_LEFT) . ' - ';
-                            $msg .= 'Selecionado como padrão, não tem data de calibração válida.';
+                    $register_pattern = $this->register->find($patterns[$i]);
+                    if ($register_pattern->require_calibration) {
+                        $calpattern = $this->register->calibration($patterns[$i]);
+                        if (isset($calpattern)) {
+                            if (strtotime(date('Y-m-d')) > strtotime($calpattern->next_calibration)) {
+                                $msg = strtoupper($calpattern->register->department->description) . ' ' . str_pad($calpattern->register->number, 4, '0', STR_PAD_LEFT) . ' - ';
+                                $msg .= 'Selecionado como padrão, não tem data de calibração válida.';
+                                return view('calibration.error', compact('msg'));
+                            }
+                            $dataForm['patterns'] [] = array([$patterns[$i], $calpattern->id]);
+                        } else {
+                            $msg = 'Padrão Selecionado sem Calibração vigente Reprovado! Isto impossibilita a geração do registro calibração --> ' . $patterns[$i];
                             return view('calibration.error', compact('msg'));
                         }
-                        $cal_pattern[] = $calpattern->id;
+                    } else {
+                        $dataForm['patterns'] [] = array([$patterns[$i], null]);
                     }
                 }
-                $dataForm['patterns'] ['register'] = $patterns;
-                $dataForm['patterns'] ['calibration'] = $cal_pattern;
                 $dataForm['status'] = $status;
                 $calibration = [
                     'register_id' => intval($id),
@@ -144,16 +148,23 @@ class CalibrationController extends Controller {
         $results = unserialize($calibration['results']);
         $status = $results['status'];
         $patterns = array();
-        foreach ($results['patterns']['register'] as $pattern) {
-            $patterns[] = $this->register->find($pattern);
-        }
-        foreach ($results['patterns']['calibration'] as $pattern) {
-            $patterns[] = $this->calibration->find($pattern);
+        for ($i = 0; $i < count($results['patterns']); $i++) {
+            if (isset($results['patterns'][$i][0][1])) {
+                $pattern = $results['patterns'][$i][0][1];
+                $patterns[] = $this->calibration->find($pattern);
+            } else {
+                $pattern = $results['patterns'][$i][0][0];
+                $patterns[] = $this->register->find($pattern);
+            }
         }
         unset($results['patterns']);
         unset($results['status']);
+
+        //return view('calibration.test_print', compact('calibration', 'results', 'patterns', 'status'));
+
         $pdf = PDF::setOptions([
-                    'images' => true
+                    'images' => true,
+                    'isPhpEnabled' => true
                 ])->loadView('calibration.print', compact('calibration', 'results', 'patterns', 'status'))->setPaper('a4', 'portrait');
         return $pdf->stream('formulario.pdf');
     }
