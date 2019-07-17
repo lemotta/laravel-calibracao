@@ -17,7 +17,7 @@
         .footer {
             bottom: 0 ;
         }
-        
+
         .pagenum:before {
             content: counter(page);
         }       
@@ -42,7 +42,7 @@ Observação:
   Este Registro de Calibração é exclusivo para o Equipamento Calibrado, não sendo
   extensivo a quaisquer lotes mesmo que similares.
 <b>
-FOIN {{$calibration->register->report->number}} - 11/07/2019     PARKS S.A. Comunicações Digitais              Página <span class="pagenum"></span>    
+FOIN {{$calibration->register->report->number}} - {{date('d/m/Y', strtotime($calibration->created_at))}}     PARKS S.A. Comunicações Digitais              Página <span class="pagenum"></span>    
 </b>
         </em></pre>        
     </div> 
@@ -258,10 +258,10 @@ FOIN {{$calibration->register->report->number}} - 11/07/2019     PARKS S.A. Comu
                 </div>                        
             </div>        
     </body>
-    
-    
-    
-       
+
+
+
+
 
 </html>
 <!--/var/www/html/laravel-calibracao/public/assets/register/css/style.css--!>

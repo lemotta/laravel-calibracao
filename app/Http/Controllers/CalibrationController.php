@@ -159,9 +159,7 @@ class CalibrationController extends Controller {
         }
         unset($results['patterns']);
         unset($results['status']);
-
-        //return view('calibration.test_print', compact('calibration', 'results', 'patterns', 'status'));
-
+        
         $pdf = PDF::setOptions([
                     'images' => true,
                     'isPhpEnabled' => true
