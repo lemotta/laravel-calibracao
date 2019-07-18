@@ -159,7 +159,7 @@ class CalibrationController extends Controller {
         }
         unset($results['patterns']);
         unset($results['status']);
-        
+
         $pdf = PDF::setOptions([
                     'images' => true,
                     'isPhpEnabled' => true
@@ -183,12 +183,20 @@ class CalibrationController extends Controller {
                 "^XZ\n";
         $diskLocal = Storage::disk('local');
         $diskLocal->put("print.zpl", $content);
-        $output = shell_exec("smbclient " . env('ADDR_PRINT') .
-                " -U " . env('USER_PRINT') .
-                " --pass \"" . env('PASS_PRINT') . "\"" .
-                " -c \"put print.zpl print.zpl;\""
-        );
-        return redirect()->route('calibration.index');
+        $output = "smbclient " . config('app.addr_print', null) .
+                " --workgroup=" . config('app.domain', null) .
+                " --user=" . config('app.user_print', null) .
+                " --pass \"" . config('app.pass_print', null) . "\"" .
+                " --command=\"put print.zpl print.zpl;\"";
+        
+        exec($output, $error, $return);
+
+        if ($return == 0) {
+            return redirect()->route('calibration.index');
+        } else {
+            $msg = "Failure command: " . $output;
+            return view('calibration.error', compact('msg'));
+        }
     }
 
     /**

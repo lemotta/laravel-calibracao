@@ -106,9 +106,10 @@ return [
     /*
      * Variavel para impressora de etiqueta
      */
-    'print_label' => env('ADDR_PRINT'),
+    'addr_print'  => env('ADDR_PRINT'),
     'user_print'  => env('USER_PRINT'),
     'pass_print'  => env('PASS_PRINT'),
+    'domain'      => env('DOMAIN'),
     /*
      * 
       |--------------------------------------------------------------------------
