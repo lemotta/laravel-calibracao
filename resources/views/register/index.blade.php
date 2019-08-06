@@ -43,10 +43,7 @@
                             <td>yes</td>
                             @endif  
                             <td>{{date('M j, Y', strtotime($register->created_at))}}</td>
-                            <td>
-                                <a href="{{route('registers.edit',$register->id)}}" class="actions edit">
-                                    <button type="button" class="btn btn-secondary">Edit</button>
-                                </a>
+                            <td>                               
                                 <a href="{{route('registers.show',$register->id)}}" class="actions delete">
                                     <button type="button" class="btn btn-info">View</button>
                                 </a>

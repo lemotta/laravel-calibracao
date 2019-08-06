@@ -24,8 +24,8 @@
                             <td>{{$cal->laboratory->laboratory}}</td>
                             <td>{{date('M j, Y', strtotime($cal->next_calibration))}}</td>
                             <td>                                
-                                <a href="{{route('registers.edit',$cal->register_id)}}" class="actions edit">
-                                    <button type="button" class="btn btn-info">Register</button>
+                                <a href="{{route('calibration.show',$cal->register_id)}}" class="actions edit">
+                                    <button type="button" class="btn btn-info">Historic</button>
                                 </a>
                                 <a href="{{route('registers.show',$cal->register_id)}}" class="actions edit">
                                     <button type="button" class="btn btn-info">View</button>

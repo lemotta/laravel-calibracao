@@ -48,6 +48,9 @@
                     <a href="{{ route('report.default', $register->id) }}" class="btn btn-primary">calibration</a>
                     @endif
                     @endif
+                    <a href="{{route('registers.edit',$register->id)}}" class="actions edit">
+                        <button type="button" class="btn btn-secondary">Edit</button>
+                    </a>
                     {!! Form::submit("delete", ['class' => 'btn btn-danger']) !!}                                        
                     {!! Form::close() !!}
                 </div>

@@ -27,9 +27,13 @@ class CalibrationController extends Controller {
         $this->calibration = $calibration;
     }
 
-    public function index() {
-        $calibration = $this->calibration->all();
-        return view('calibration.index', compact('calibration'));
+    public function index() {        
+        $calibration = Calibration::join('registers','calibrations.register_id','registers.id')                
+                ->whereRaw('registers.active = 1 AND calibrations.id IN (SELECT MAX(calibrations.id) from calibrations group by calibrations.register_id)')
+                ->groupBy('calibrations.register_id')                
+                ->select('calibrations.*')
+                ->get();
+        return view('calibration.index', compact('calibration'));        
     }
 
     /**
@@ -130,7 +134,11 @@ class CalibrationController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        //
+        $calibration = Calibration::                
+                where('calibrations.register_id',$id)
+                ->latest('calibrations.id')
+                ->get();
+        return view('calibration.index', compact('calibration')); 
     }
 
     /**
