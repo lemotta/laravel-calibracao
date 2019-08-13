@@ -23,6 +23,8 @@ Route::get('/home', 'CalibrationController@index')->name('home');
 Route::resource('registers','RegisterController');
 
 Route::resource('calibration','CalibrationController');
+Route::get('alarms','CalibrationController@alarms')->name('calibration.alarms');
+
 Route::get('print/{id}','CalibrationController@report')->name('calibration.print');
 Route::get('tag/{id}','CalibrationController@tag')->name('calibration.tag');
 
@@ -41,4 +43,4 @@ Route::get('report/205/{id}','ReportsController@report205')->name('report.205');
 Route::get('report/207/{id}','ReportsController@report207')->name('report.207');
 Route::get('report/213/{id}','ReportsController@report213')->name('report.213');
 Route::get('report/324/{id}','ReportsController@report324')->name('report.324');
-Route::post('report','ReportsController@pdf324')->name('report.324.pdf');
+//Route::post('report','ReportsController@pdf324')->name('report.324.pdf');

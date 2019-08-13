@@ -32,8 +32,14 @@ class CalibrationController extends Controller {
                 ->whereRaw('registers.active = 1 AND calibrations.id IN (SELECT MAX(calibrations.id) from calibrations group by calibrations.register_id)')
                 ->groupBy('calibrations.register_id')                
                 ->select('calibrations.*')
-                ->get();
+                ->paginate(10);
         return view('calibration.index', compact('calibration'));        
+    }
+    
+    public function alarms() {
+       $calibration = Calibration::whereRaw('calibrations.next_calibration <= DATE_ADD(CURDATE(), INTERVAL 30 DAY)')                
+                ->paginate(10);
+        return view('calibration.alarms', compact('calibration'));
     }
 
     /**

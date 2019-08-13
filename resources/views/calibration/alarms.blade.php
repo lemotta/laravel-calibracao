@@ -6,21 +6,27 @@
             <div class="card">
                 <div class="card-header">
                     Calibrations
-                    <a href="{{route('calibration.alarms')}}" class="btn btn-danger btn-add float-right"><span class="glyphicon glyphicon-plus"></span>Alarms</a>
+                    <a href="{{route('calibration.index')}}" class="btn btn-primary btn-add float-right"><span class="glyphicon glyphicon-plus"></span>Calibrations</a>
                 </div>                
                 <div class="card-body">                    
                     <table class="table table-striped">
                         <tr>        
+                            <th>Status</th>
                             <th>ID</th>        
                             <th>Serial</th>
                             <th>Type</th>
                             <th>Model</th>
                             <th>Laboratory</th>
                             <th>Next Calibration</th> 
-                            <th>Actions</th>
+                            <th>Action</th>
                         </tr>
                         @foreach($calibration as $cal)
                         <tr>        
+                            @if(strtotime($cal->next_calibration) < strtotime(date('Y-m-d')))
+                            <td><b><font color="red">Expired</font></b></td>
+                            @else
+                            <td><b>Urgent</b></td>
+                            @endif
                             <td class="title-pg">{{$cal->register->department->description}} {{str_pad($cal->register->number,4,'0', STR_PAD_LEFT)}}</td>
                             <td>{{$cal->register->serialnumber}}</td>                                    
                             <td>{{$cal->register->modelofequipament->typeofequipament->type}}</td>
@@ -28,20 +34,9 @@
                             <td>{{$cal->laboratory->laboratory}}</td>
                             <td>{{date('M j, Y', strtotime($cal->next_calibration))}}</td>
                             <td>                                
-                                <a href="{{route('calibration.show',$cal->register_id)}}" class="actions edit">
-                                    <button type="button" class="btn btn-info">Historic</button>
-                                </a>
                                 <a href="{{route('registers.show',$cal->register_id)}}" class="actions edit">
                                     <button type="button" class="btn btn-info">View</button>
-                                </a>
-                                @if( isset($cal->register->report_id) )
-                                <a href="{{ route('calibration.print', $cal->id) }}" class="actions edit">
-                                    <button type="button" class="btn btn-info">Report</button>
-                                </a>
-                                @endif
-                                <a href="{{route('calibration.tag',$cal->id)}}" class="actions edit">
-                                    <button type="button" class="btn btn-info">Print</button>
-                                </a>
+                                </a>                                
                             </td>                            
                         </tr>
                         @endforeach

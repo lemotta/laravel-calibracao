@@ -50,7 +50,8 @@
                             </td>
                         </tr>
                         @endforeach
-                    </table>                        
+                    </table>
+                    {!! $registers->links() !!}
                 </div>
             </div>
         </div>

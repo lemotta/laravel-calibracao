@@ -37,7 +37,7 @@ class RegisterController extends Controller {
     }
 
     public function index() {
-        $registers = $this->register->all();
+        $registers = $this->register->paginate(5);
         return view('register.index', compact('registers'));
     }
 
