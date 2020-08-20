@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,17 +28,21 @@ class CalibrationController extends Controller {
         $this->calibration = $calibration;
     }
 
-    public function index() {        
-        $calibration = Calibration::join('registers','calibrations.register_id','registers.id')                
+    public function index() {
+        $calibration = Calibration::join('registers', 'calibrations.register_id', 'registers.id')
                 ->whereRaw('registers.active = 1 AND calibrations.id IN (SELECT MAX(calibrations.id) from calibrations group by calibrations.register_id)')
-                ->groupBy('calibrations.register_id')                
+                ->groupBy('calibrations.register_id')
                 ->select('calibrations.*')
                 ->paginate(10);
-        return view('calibration.index', compact('calibration'));        
+        return view('calibration.index', compact('calibration'));
     }
-    
+
     public function alarms() {
-       $calibration = Calibration::whereRaw('calibrations.next_calibration <= DATE_ADD(CURDATE(), INTERVAL 30 DAY)')                
+        $calibration = Calibration::join('registers', 'calibrations.register_id', 'registers.id')
+                ->whereRaw('registers.active = 1 AND calibrations.id IN (SELECT MAX(calibrations.id) from calibrations group by calibrations.register_id)')
+                ->groupBy('calibrations.register_id')
+                ->select('calibrations.*')
+                ->where('calibrations.next_calibration','<', Carbon::now()->addDays(30) )
                 ->paginate(10);
         return view('calibration.alarms', compact('calibration'));
     }
@@ -140,11 +145,11 @@ class CalibrationController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        $calibration = Calibration::                
-                where('calibrations.register_id',$id)
+        $calibration = Calibration::
+                where('calibrations.register_id', $id)
                 ->latest('calibrations.id')
                 ->get();
-        return view('calibration.index', compact('calibration')); 
+        return view('calibration.index', compact('calibration'));
     }
 
     /**
@@ -202,7 +207,7 @@ class CalibrationController extends Controller {
                 " --user=" . config('app.user_print', null) .
                 " --pass \"" . config('app.pass_print', null) . "\"" .
                 " --command=\"put print.zpl print.zpl;\"";
-        
+
         exec($output, $error, $return);
 
         if ($return == 0) {
