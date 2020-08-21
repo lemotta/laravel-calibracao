@@ -146,9 +146,9 @@ class CalibrationController extends Controller {
      */
     public function show($id) {
         $calibration = Calibration::
-                where('calibrations.register_id', $id)
+                where('calibrations.register_id','=', $id)
                 ->latest('calibrations.id')
-                ->get();
+                ->paginate(10);
         return view('calibration.index', compact('calibration'));
     }
 
