@@ -183,7 +183,7 @@ class CalibrationController extends Controller {
                     'images' => true,
                     'isPhpEnabled' => true
                 ])->loadView('calibration.print', compact('calibration', 'results', 'patterns', 'status'))->setPaper('a4', 'portrait');
-        return $pdf->stream('formulario.pdf');
+        return $pdf->stream('formulario.pdf');        
     }
 
     public function tag($id) {
@@ -195,7 +195,7 @@ class CalibrationController extends Controller {
                 "^FO025,80^GB410,0,3^FS\n" .
                 "^FO025,120^ADN,8,4^FDSERIAL: " . $calibration->register->serialnumber . " / " . strtoupper($calibration->register->department->description) . " " . str_pad($calibration->register->number, 4, '0', STR_PAD_LEFT) . "^FS\n" .
                 "^FO025,150^ADN,8,4^FDVALIDADE: " . date('M j, Y', strtotime($calibration->next_calibration)) . "^FS\n" .
-                "^FO025,180^ADN,8,4^FDRESPONSAVEL: " . ucwords(auth()->user()->name) . "^FS\n" .
+                "^FO025,180^ADN,8,4^FDRESPONSAVEL: " . ucfirst($calibration->user->name) . "^FS\n" .
                 "^FO025,010^XGp14,1,1^FS\n" .
                 "^PQ0001,0,1,Y\n" .
                 "^BY1,2.5:1,9\n" .

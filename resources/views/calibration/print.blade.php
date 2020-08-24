@@ -252,7 +252,7 @@ FOIN {{$calibration->register->report->number}} - {{date('d/m/Y', strtotime($cal
                     EXECUÇÃO E APROVAÇÃO
                 </p>
                 <div class="form-group" style="text-align: center">                
-                    <p>{{ Auth::user()->name }}</p>
+                    <p>{{$calibration->user->name}}</p>
                     <p>Período entre Calibração (Meses): {{$calibration->register->period->period_at_month}}</p>
                     <p>Próxima Calibração: {{date('M j, Y', strtotime($calibration->next_calibration))}}</p>
                 </div>                        

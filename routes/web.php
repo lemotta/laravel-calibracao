@@ -32,7 +32,7 @@ Route::resource('models_eqp','ModelOfEquipamentController');
 
 Route::get('report/default/{id}','ReportsController@default_report')->name('report.default');
 Route::get('report/159/{id}','ReportsController@report159')->name('report.159');
-Route::get('report/160/{id}','ReportsController@report159')->name('report.160');
+Route::get('report/160/{id}','ReportsController@report160')->name('report.160');
 Route::get('report/161/{id}','ReportsController@report161')->name('report.161');
 Route::get('report/163/{id}','ReportsController@report163')->name('report.163');
 Route::get('report/164/{id}','ReportsController@report164')->name('report.164');
