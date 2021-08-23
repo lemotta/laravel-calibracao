@@ -49,7 +49,8 @@ class ManufacturerTableSeeder extends Seeder {
             'THERMOTRON',
             'MIC',
             'NOVUS',
-            'WAVETEK'
+            'WAVETEK',
+            'KIC'
         ];
         
         foreach ($manufacturers as $manufacturer) {

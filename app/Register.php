@@ -43,5 +43,9 @@ class Register extends Model {
     public function calibration($id) {
         return Calibration::where('register_id', $id)->orderBy('register_id', 'desc')->first();
     }
+    
+    public function maxcalibration($id) {
+        return Calibration::where('register_id', $id)->max('id');//orderBy('register_id', 'desc')->first();
+    }
 
 }
