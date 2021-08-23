@@ -93,8 +93,7 @@ class CalibrationController extends Controller {
                     if ($register_pattern->require_calibration) {                        
                         $calpattern0 = $this->register->maxcalibration($patterns[$i]);
                         $calpattern = $this->calibration->find($calpattern0);
-                        //return array($calpattern);
-                        
+                        //return array($calpattern);                        
                         if (isset($calpattern)) {
                             if (strtotime(date('Y-m-d')) > strtotime($calpattern->next_calibration)) {
                                 $msg = strtoupper($calpattern->register->department->description) . ' ' . str_pad($calpattern->register->number, 4, '0', STR_PAD_LEFT) . ' - ';
